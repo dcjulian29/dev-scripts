@@ -1,0 +1,1 @@
+@C:\python\python.exe C:\python\Lib\site-packages\django\bin\django-admin.py %*
