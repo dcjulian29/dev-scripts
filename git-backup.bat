@@ -38,7 +38,6 @@ echo.
 
 MKDIR %DDIR%
 
-xcopy %SDIR% %DDIR% /E /V /H 
-
+robocopy %SDIR% %DDIR% /MIR /Z /SL /MT /XJ /R:5 /W:5
 
 :EOF
