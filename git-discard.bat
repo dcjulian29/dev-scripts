@@ -14,10 +14,18 @@ GOTO EOF
 
 :GITDIR
 
-IF "%1" == "" GOTO FILEERROR
+IF "%1" == "" GOTO PROVIDEFILE
 IF NOT EXIST %1 GOTO FILEERROR
 
 GOTO CONTINUE
+
+:PROVIDEFILE
+
+echo.
+echo Please provide a file name to discard.
+echo.
+
+GOTO EOF
 
 :FILEERROR
 
