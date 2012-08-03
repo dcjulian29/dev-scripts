@@ -39,14 +39,15 @@ echo.
 echo.
 echo Cloning %PROJNAME%...
 
-%GIT% svn clone %REPO%/%PROJNAME% --authors-file=%DEVT%\svn-users-mi.txt -s %DEVF%\%PROJNAME%
+%GIT% svn clone %REPO%/%PROJNAME% --authors-file=%DEVT:\=/%/svn-users-mi.txt -s %DEVF%\%PROJNAME%
 
 pushd %DEVF%\%PROJNAME%
 
-echo.
-echo.
-echo Adding Global Ignores to project...
-CALL %DEVT%\git-add-global-ignores.bat
+#echo.
+#echo.
+#echo Adding SVN Authors to the project...
+#echo [svn] >> .git\config
+#echo    authorsfile = %DEVT:\=/%/svn-users-mi.txt >> .git\config
 
 echo.
 echo.
@@ -66,7 +67,7 @@ xcopy /E /I /Y .git\refs\remotes\* .git\refs\heads\
 echo.
 echo.
 echo Cleaning GIT repository...
-%GIT% gc
+::%GIT% gc
 
 popd
 
