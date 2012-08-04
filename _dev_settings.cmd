@@ -1,5 +1,3 @@
-SET REPO=https://sescm.marriott.com/svn
-
 SET DEVF=C:\dev
 SET DEVR=C:\dev-retired
 SET DEVP=C:\dev-postponed
@@ -32,6 +30,7 @@ GOTO CONT
 :CONT
 
 SET DEVT=C:\bin\development-tools
+for /f "usebackq delims=" %%O in (`where _dev_settings.cmd`) do set DEVT=%%~dpO
 
 SET SVN_INSTALL_ROOT=%DEVT%\svn
 SET SVN=%SVN_INSTALL_ROOT%\bin\svn.exe
