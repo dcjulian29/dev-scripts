@@ -4,6 +4,7 @@
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
+CALL %DEVT%\_svn_LoadSettings.cmd YES
 
 SET PROJNAME=ToolBox2
 
@@ -18,7 +19,7 @@ echo.
 echo.
 echo Checking out %PROJNAME%...
 
-%SVN% co %REPO%/%PROJNAME%/trunk %DEVF%\%PROJNAME%
+%SVN% co %SVN-URL%/%PROJNAME%/trunk %DEVF%\%PROJNAME%
 
 echo.
 echo Done.

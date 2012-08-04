@@ -4,6 +4,7 @@
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
+CALL %DEVT%\_svn_LoadSettings.cmd YES
 
 SET BRANCH=v%date:~-4,4%%date:~-7,2%%date:~-10,2%
 SET PROJNAME=ToolBox2
@@ -23,7 +24,7 @@ echo.
 echo.
 echo Branching %PROJNAME% with %BRANCH%...
 
-%SVN% copy %REPO%/%PROJNAME%/trunk %REPO%/%PROJNAME%/tags/%BRANCH% -m "Branching %PROJNAME% with %BRANCH%"
+%SVN% copy %SVN-URL%/%PROJNAME%/trunk %SVN-URL%/%PROJNAME%/tags/%BRANCH% -m "Branching %PROJNAME% with %BRANCH%"
 
 echo.
 echo Done.

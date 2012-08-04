@@ -4,6 +4,7 @@
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
+CALL %DEVT%\_svn_LoadSettings.cmd YES
 
 SET PROJNAME=ToolBox2
 
@@ -22,7 +23,7 @@ echo.
 echo.
 echo Checking out %PROJNAME% with the tag %TAGVER%...
 
-%SVN% co %REPO%/%PROJNAME%/tags/%TAGVER% %DEVF%\%PROJNAME%-%TAGVER%
+%SVN% co %SVN-URL%/%PROJNAME%/tags/%TAGVER% %DEVF%\%PROJNAME%-%TAGVER%
 
 echo.
 echo Done.

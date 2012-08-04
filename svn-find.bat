@@ -4,6 +4,7 @@
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
+CALL %DEVT%\_svn_LoadSettings.cmd YES
 
 SET PROJNAME=%1
 
@@ -27,7 +28,7 @@ echo Looking for %PROJNAME%...
 echo.
 echo    REV  Author                Date         Project Name  > %OUTPUT%
 echo    --------------------------------------------------------------  >> %OUTPUT%
-%SVN% list -v %REPO% | %WINDIR%\System32\find.exe /I "%PROJNAME%"  >> %OUTPUT%
+%SVN% list -v %SVN-URL% | %WINDIR%\System32\find.exe /I "%PROJNAME%"  >> %OUTPUT%
 
 echo.
 echo.

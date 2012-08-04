@@ -4,6 +4,7 @@
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
+CALL %DEVT%\_svn_LoadSettings.cmd YES
 
 SET TAGVER=v%date:~-4,4%%date:~-10,2%%date:~-7,2%
 SET PROJNAME=ToolBox2
@@ -24,7 +25,7 @@ echo.
 echo.
 echo Tagging %PROJNAME% with %TAGVER%...
 
-%SVN% copy %REPO%/%PROJNAME%/trunk %REPO%/%PROJNAME%/tags/%TAGVER% -m "Tagging %PROJNAME% with %TAGVER%"
+%SVN% copy %SVN-URL%/%PROJNAME%/trunk %SVN-URL%/%PROJNAME%/tags/%TAGVER% -m "Tagging %PROJNAME% with %TAGVER%"
 
 echo.
 echo Done.
