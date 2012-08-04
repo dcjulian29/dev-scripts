@@ -3,7 +3,7 @@
 
 setlocal
 
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 CALL %DEVT%\_tfs_LoadSettings.cmd YES
 
 IF "%1" == "" GOTO PROVIDEPROJECT

@@ -2,7 +2,7 @@
 :: Show the most recent commits about the projects in the DEV folder.
 
 setlocal
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 ECHO.
 ECHO Showing last commit message for projects...

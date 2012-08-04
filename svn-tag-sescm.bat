@@ -3,7 +3,7 @@
 
 setlocal
 
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 SET TAGVER=v%date:~-4,4%%date:~-10,2%%date:~-7,2%
 SET PROJNAME=ToolBox2

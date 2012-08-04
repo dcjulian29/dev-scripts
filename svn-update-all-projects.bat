@@ -1,7 +1,7 @@
 @ECHO OFF
 :: Do a SVN Update on all SVN project in the PROJECTS folder
 
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 ECHO.
 ECHO Searching for SVN projects to update...

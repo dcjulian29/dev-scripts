@@ -1,7 +1,7 @@
 @echo off
 
 setlocal
-call C:\bin\development-tools\_dev_settings.bat
+call C:\bin\development-tools\_dev_settings.cmd
 @echo on
 
 set DN=%DEVF%\nuget-packages

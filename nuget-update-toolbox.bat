@@ -3,7 +3,7 @@
 
 setlocal
 
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 SET SDIR=%DEVF%\ToolBox\build
 SET DDIR=%DEVF%\nuget-packages

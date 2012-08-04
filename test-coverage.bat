@@ -1,6 +1,6 @@
 @echo off
 
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 SET OC=%DEVT%\OpenCover\OpenCover.Console.exe
 SET RG=%DEVT%\OpenCoverReportGenerator\ReportGenerator.exe

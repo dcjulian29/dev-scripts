@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 rem Git installation root.
 set PATH=%GIT_INSTALL_ROOT%\bin;%GIT_INSTALL_ROOT%\mingw\bin;%PATH%

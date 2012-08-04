@@ -3,7 +3,7 @@
 
 setlocal
 
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 SET BRANCH=v%date:~-4,4%%date:~-7,2%%date:~-10,2%
 SET PROJNAME=ToolBox2

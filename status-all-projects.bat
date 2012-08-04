@@ -2,7 +2,7 @@
 :: Do a SVN Status on all SVN project in the PROJECTS folder
 
 setlocal
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 ECHO.
 ECHO Showing status for SVN projects...

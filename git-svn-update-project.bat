@@ -2,7 +2,7 @@
 
 setlocal
 
-CALL C:\bin\development-tools\_dev_settings.bat
+CALL C:\bin\development-tools\_dev_settings.cmd
 
 IF "%1" == "" GOTO PROVIDEPROJECT
 
