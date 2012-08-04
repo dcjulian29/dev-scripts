@@ -29,7 +29,6 @@ GOTO CONT
 
 :CONT
 
-SET DEVT=C:\bin\development-tools
 for /f "usebackq delims=" %%O in (`where _dev_settings.cmd`) do set DEVT=%%~dpO
 
 SET SVN_INSTALL_ROOT=%DEVT%\svn
@@ -39,10 +38,9 @@ SET GIT_INSTALL_ROOT=%DEVT%\msysgit
 SET GIT=%GIT_INSTALL_ROOT%\bin\git.exe
 
 SET ZIP="C:\Program Files\7-Zip\7z.exe"
-
 SET NANT=%DEVT%\nant\bin\NAnt.exe
 SET NUNIT=%DEVT%\nunit\bin\nunit-console-x86.exe
-
+SET NSIS=%DEVT%\nsis\nsis.exe
 SET DOBUDISH=%DEVT%\DocBook\dobudish.cmd
 
 PATH %SVN_INSTALL_ROOT%\bin;%GIT_INSTALL_ROOT%\bin;%PATH%
