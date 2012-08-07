@@ -1,4 +1,4 @@
-:: Create and clone a project from Marriott SVN Repository
+:: Create and clone a project from SVN Repository
 @echo off
 
 setlocal
