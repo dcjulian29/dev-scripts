@@ -81,7 +81,7 @@ cd .svndetached
 %GIT% svn init %SVN-URL%/%PROJNAME% -s >nul
 cd ..
 
-:DETACHED-STARTED
+::DETACHED-STARTED
 
 cd .svndetached
 
@@ -102,6 +102,30 @@ cd %DEVF%\%PROJNAME%
 ::* c5f7f84 - (trunk) Test of GetRelevantPatches.
 
 
+:ATTEMPT3
+
+cd .git
+
+if exist .svndetached GOTO DETACHED-STARTED
+
+mkdir .svndetached
+
+cd .svndetached
+%GIT% svn init %SVN-URL%/%PROJNAME% -s >nul
+cd ..
+
+:DETACHED-STARTED
+
+cd .svndetached
+
+echo You can press Ctrl-C at any time and resume later...
+%GIT% svn fetch --all
+
+cd %DEVF%\%PROJNAME%
+
+%GIT% fetch .git/.svndetached refs/remotes/trunk --append
+
+
 
 :CLONE-COMPLETE
 echo Cloning complete.
@@ -120,8 +144,8 @@ xcopy /E /I /Y .git\refs\remotes\* .git\refs\heads\
 
 echo.
 echo Optimizing GIT repository...
-%GIT% repack -d
-%GIT% gc
+%GIT% repack -a -d
+%GIT% gc --prune=now
 del /Y %DEVF%\%PROJNAME%\.git\git-svn-clone-rev 2>nul
 goto DONE
 
