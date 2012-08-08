@@ -111,7 +111,7 @@ if exist .svndetached GOTO DETACHED-STARTED
 mkdir .svndetached
 
 cd .svndetached
-%GIT% svn init %SVN-URL%/%PROJNAME% -s >nul
+%GIT% svn init %SVN-URL%/%PROJNAME% -s --prefix=detached/ >nul
 cd ..
 
 :DETACHED-STARTED
@@ -125,7 +125,7 @@ cd %DEVF%\%PROJNAME%
 
 %GIT% fetch .git/.svndetached refs/remotes/trunk --append
 
-
+:: How do I get the history joined to the other 
 
 :CLONE-COMPLETE
 echo Cloning complete.
