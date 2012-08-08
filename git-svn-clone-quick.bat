@@ -50,7 +50,7 @@ set SVN-LASTREV=%SVN-LASTREV:Last Changed Rev: =%
 mkdir %DEVF%\%PROJNAME%
 pushd %DEVF%\%PROJNAME%
 
-%GIT% svn init %SVN-URL%/%PROJNAME% -s
+%GIT% svn init %SVN-URL%/%PROJNAME% -s --prefix=svn/
 %GIT% config svn.authorsfile %DEVT:\=/%%SVN-AUTHORSFILE%
 %GIT% svn fetch -r %SVN-LASTREV%
 SET FETCH-ERRORLEVEL=%ERRORLEVEL%
