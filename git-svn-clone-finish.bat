@@ -106,24 +106,26 @@ cd %DEVF%\%PROJNAME%
 
 cd .git
 
-if exist .svndetached GOTO DETACHED-STARTED
+if exist .detached GOTO DETACHED-STARTED
 
-mkdir .svndetached
+mkdir .detached
 
-cd .svndetached
+cd .detached
 %GIT% svn init %SVN-URL%/%PROJNAME% -s --prefix=detached/ >nul
 cd ..
 
 :DETACHED-STARTED
 
-cd .svndetached
+cd .detached
 
 echo You can press Ctrl-C at any time and resume later...
+echo.
+
 %GIT% svn fetch --all
 
 cd %DEVF%\%PROJNAME%
 
-%GIT% fetch .git/.svndetached refs/remotes/trunk --append
+%GIT% fetch .git/.detached refs/remotes/trunk --append
 
 :: How do I get the history joined to the other 
 
