@@ -59,6 +59,7 @@ SET COMPILE=^<Compile Include=""
 SET REFERENCE=^<Reference Include=""
 SET WCF=^<Compile Include=""Service References\
 SET WS=^<Compile Include=""Web References\
+SET RESOURCE=^<EmbeddedResource Include=""
 
 SET T1C=%TEMP%\sync-msbuild-1C.txt
 SET T2C=%TEMP%\sync-msbuild-2C.txt
@@ -71,6 +72,9 @@ SET T2W=%TEMP%\sync-msbuild-2W.txt
 
 SET T1WS=%TEMP%\sync-msbuild-1WS.txt
 SET T2WS=%TEMP%\sync-msbuild-2WS.txt
+
+SET T1ER=%TEMP%\sync-msbuild-1ER.txt
+SET T2ER=%TEMP%\sync-msbuild-2ER.txt
 
 type %1 | %FIND% "%COMPILE%" | %NFIND% "%BAI%" | %NFIND% "%WCF%" | %NFIND% "%WS%" | %SORT% > %T1C%
 type %2 | %FIND% "%COMPILE%" | %NFIND% "%BAI%" | %NFIND% "%WCF%" | %NFIND% "%WS%" | %SORT% > %T2C%
@@ -92,6 +96,11 @@ type %2 | %FIND% "%WS%" | %SORT% > %T2WS%
 echo "" >> %T1WS%
 echo "" >> %T2WS%
 
+type %1 | %FIND% "%RESOURCE%" | %SORT% > %T1ER%
+type %2 | %FIND% "%RESOURCE%" | %SORT% > %T2ER%
+echo "" >> %T1ER%
+echo "" >> %T2ER%
+
 echo ----- Compile Item Differences
 %PSHELL% "& {Compare-Object (Get-Content %T1C%) (Get-Content %T2C%)}"
 
@@ -106,6 +115,10 @@ echo ----- Service Reference Item Differences
 echo.
 echo ----- Web Reference Item Differences
 %PSHELL% "& {Compare-Object (Get-Content %T1WS%) (Get-Content %T2WS%)}"
+
+echo.
+echo ----- Embedded Resource Item Differences
+%PSHELL% "& {Compare-Object (Get-Content %T1ER%) (Get-Content %T2ER%)}"
 
 echo.
 
