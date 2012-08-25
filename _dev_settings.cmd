@@ -14,7 +14,7 @@ GOTO CONT
 :JULIAN
 
 SET DEVF=D:\dev
-SET DEVR=D:\_archives\dev
+SET DEVR=D:\archives\dev
 SET DEVP=%DEVF%\_postponed
 IF EXIST %TEMP%\dropbox-dev GOTO DROPBOX
 GOTO CONT
