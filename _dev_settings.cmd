@@ -8,16 +8,37 @@ IF [%COMPUTERNAME%] == [JULIAN] GOTO JULIAN
 :: Sometimes I work out of the Dropbox folder and need to the tools to look there...
 IF EXIST %TEMP%\dropbox-dev GOTO DROPBOX
 
+:: Sometimes I work directly in a custom folder and need the tools and scripts to use that folder.
+if exist %TEMP%\custom-dev GOTO CUSTOM
+
 :: Skip special environment configurations
 GOTO CONT
 
 :JULIAN
 
-SET DEVF=D:\dev
-SET DEVR=D:\archives\dev
-SET DEVP=%DEVF%\_postponed
-IF EXIST %TEMP%\dropbox-dev GOTO DROPBOX
-GOTO CONT
+set DEVF=D:\dev
+set DEVR=D:\archives\dev
+set DEVP=%DEVF%\_postponed
+
+if exist %TEMP%\dropbox-dev goto DROPBOX
+if exist %TEMP%\custom-dev goto CUSTOM
+goto CONT
+
+:CUSTOM
+
+echo.
+echo Enabling Custom DEV configuration...
+echo.
+
+set DEVF=%CD%
+
+set /p ND="DEV directory [%DEVF%]? "
+if "" neq "%ND%" set DEVF=%ND%
+set DEVF=%DEVF: =%
+
+echo.
+
+goto CONT
 
 :DROPBOX
 
