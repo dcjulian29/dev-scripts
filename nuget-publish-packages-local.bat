@@ -2,31 +2,18 @@
 
 setlocal
 call C:\bin\development-tools\_dev_settings.cmd
-@echo on
 
 set DN=%DEVF%\nuget-packages
+set DST=%DN%\_packages\
 
 pushd %DN%
 
-for /d %%D in (%DN%\*) do (
-  set PN=
-  set PD=%%D
-  FOR %%A in (%PD:\= %) DO SET PN=%%A
-  echo %PN%
+for /f "tokens=*" %%e in ('dir /b /s *.nupkg') do (
+  echo %%e| findstr "_packages" >nul
+  if ERRORLEVEL 1 (
+    if not exist %DST%%%~ne.nupkg (
+      echo -- %%e
+      copy %%e %DST%
+    )
+  )
 )
-
-popd
-
-::  if not [%PAKNAME%]==[.git] (
-::    echo -- %PAKDIR%
-::  )
-
-
-::  <target name="push.local"
-::          depends="nuget">
-::    <copy todir="..\_packages">
-::      <fileset basedir="build">
-::        <include name="*.nupkg"/>
-::      </fileset>
-::    </copy>
-::  </target>
