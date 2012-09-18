@@ -68,6 +68,7 @@ echo.
 echo Discarding all changes in this project...
 echo.
 
+%git% reset HEAD
 %git% stash save --keep-index
 %git% stash drop
 
