@@ -1,7 +1,7 @@
 :: Compare "custom" msbuild file with the Visual Studio "CSPROJ" file
 @echo off
 
-setlocal
+setlocal ENABLEDELAYEDEXPANSION
 
 CALL C:\bin\development-tools\_dev_settings.cmd
 
@@ -83,8 +83,18 @@ echo "" >> %T2C%
 
 type %1 | %FIND% "%REFERENCE%" | %SORT% > %T1R%
 type %2 | %FIND% "%REFERENCE%" | %SORT% > %T2R%
-echo "" >> %T1R%
-echo "" >> %T2R%
+echo.>> %T1R%
+echo.>> %T2R%
+
+move %T1R% %T1R%.orignal >nul
+for /f "tokens=1 delims=," %%i in (%T1R%.orignal) do echo %%i >> %T1R%
+
+%PSHELL% "((Get-Content %T1R%) | Foreach-Object {$_ -replace '""[^\w]*>', ''} | Set-Content %T1R%)"
+
+move %T2R% %T2R%.orignal >nul
+for /f "tokens=1 delims=," %%i in (%T2R%.orignal) do echo %%i >> %T2R%
+
+%PSHELL% "((Get-Content %T2R%) | Foreach-Object {$_ -replace '""[^\w]*>', ''} | Set-Content %T2R%)"
 
 type %1 | %FIND% "%WCF%" | %SORT% > %T1W%
 type %2 | %FIND% "%WCF%" | %SORT% > %T2W%
@@ -101,24 +111,25 @@ type %2 | %FIND% "%RESOURCE%" | %SORT% > %T2ER%
 echo "" >> %T1ER%
 echo "" >> %T2ER%
 
+SET FT=Format-Table -HideTableHeaders
 echo ----- Compile Item Differences
-%PSHELL% "& {Compare-Object (Get-Content %T1C%) (Get-Content %T2C%)}"
+%PSHELL% "& {Compare-Object (Get-Content %T1C%) (Get-Content %T2C%)} | %FT%"
 
 echo.
 echo ----- Reference Item Differences
-%PSHELL% "& {Compare-Object (Get-Content %T1R%) (Get-Content %T2R%)}"
+%PSHELL% "& {Compare-Object (Get-Content %T1R%) (Get-Content %T2R%)} | %FT%"
 
 echo.
 echo ----- Service Reference Item Differences
-%PSHELL% "& {Compare-Object (Get-Content %T1W%) (Get-Content %T2W%)}"
+%PSHELL% "& {Compare-Object (Get-Content %T1W%) (Get-Content %T2W%)} | %FT%"
 
 echo.
 echo ----- Web Reference Item Differences
-%PSHELL% "& {Compare-Object (Get-Content %T1WS%) (Get-Content %T2WS%)}"
+%PSHELL% "& {Compare-Object (Get-Content %T1WS%) (Get-Content %T2WS%)} | %FT%"
 
 echo.
 echo ----- Embedded Resource Item Differences
-%PSHELL% "& {Compare-Object (Get-Content %T1ER%) (Get-Content %T2ER%)}"
+%PSHELL% "& {Compare-Object (Get-Content %T1ER%) (Get-Content %T2ER%)} | %FT%"
 
 echo.
 
