@@ -1,22 +1,15 @@
-:: Checkout a specific tag of project 
 @echo off
 
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
 CALL %DEVT%\_svn_LoadSettings.cmd YES
-
-SET PROJNAME=ToolBox2
-
-SET /p NP="What is the name of the project [%PROJNAME%]? "
-IF "" neq "%NP%" SET PROJNAME=%NP% 
+call C:\bin\development-tools\_ask-project-directory.cmd NO .svn %1
+if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
 SET /p TAGVER="What tag do you what to checkout? "
 IF "" equ "%TAGVER%" EXIT
-:: Trim input
-SET PROJNAME=%PROJNAME: =%
 SET TAGVER=%TAGVER: =%
-
 
 echo.
 echo.

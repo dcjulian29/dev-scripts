@@ -5,29 +5,15 @@ setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
 CALL %DEVT%\_svn_LoadSettings.cmd YES
+call C:\bin\development-tools\_ask-project-directory.cmd YES .git %1
+set ERR=%ERRORLEVEL%
+if %ERR% equ 1 goto NOTCLONE
+if %ERR% neq 0 exit /b %ERRORLEVEL%
 
-IF "%1" == "" GOTO PROVIDEPROJECT
+goto FINISHCLONE
 
-SET PROJNAME=%1
-GOTO CONTINUE
+:NOTCLONE
 
-:PROVIDEPROJECT
-
-SET PROJNAME=ToolBox2
-
-SET /p NP="What is the name of the project [%PROJNAME%]? "
-IF "" neq "%NP%" SET PROJNAME=%NP% 
-
-:CONTINUE
-
-:: Trim input
-SET PROJNAME=%PROJNAME: =%
-
-SET DDIR=%DEVF%\%PROJNAME%
-
-IF EXIST %DDIR% GOTO FINISHCLONE
-
-echo.
 echo This project has not been cloned, please perform a quick-clone of the project and try again.
 echo.
 

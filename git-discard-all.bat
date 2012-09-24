@@ -2,54 +2,10 @@
 
 setlocal
 
-CALL C:\bin\development-tools\_dev_settings.cmd
+call C:\bin\development-tools\_dev_settings.cmd
+call C:\bin\development-tools\_ask-project-directory.cmd YES .git %1
+if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
-IF "%1" == "" GOTO PROVIDEPROJECT
-
-SET PROJNAME=%1
-GOTO CONTINUE
-
-:PROVIDEPROJECT
-
-SET PROJNAME=
-FOR %%A in (%CD:\= %) DO SET PROJNAME=%%A
-
-:CONTINUE
-
-SET PROJNAME=%PROJNAME: =%
-SET DDIR=%DEVF%\%PROJNAME%
-
-if exist "%DDIR%\.git" GOTO GITDIR
-
-echo.
-echo This directory does not contain a GIT repository
-echo.
-echo.
-GOTO EOF
-
-:GITDIR
-
-IF EXIST %DDIR% GOTO CHECKGIT
-
-echo.
-echo This project does not exist.
-echo.
-
-GOTO EOF
-
-:CHECKGIT
-
-pushd %DEVF%\%PROJNAME%
-
-if exist "%CD%\.git" GOTO GITDIR
-
-echo.
-echo This directory does not contain a GIT repository
-echo.
-echo.
-GOTO EOF
-
-:GITDIR
 
 echo.
 CHOICE /C:YN /M "Are you sure that you want to discard all changes"

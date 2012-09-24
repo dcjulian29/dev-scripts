@@ -4,22 +4,10 @@
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
-
-if exist "%CD%\.git" GOTO GITDIR
-
-echo.
-echo This directory does not contain a GIT repository
-echo.
-echo.
-GOTO EOF
-
-:GITDIR
+call C:\bin\development-tools\_ask-project-directory.cmd YES .git %1
+if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
 SET BVER=%date:~-4,4%%date:~-10,2%%date:~-7,2%
-
-SET PROJNAME=
-FOR %%A in (%CD:\= %) DO SET PROJNAME=%%A
-
 SET SDIR=%TEMP%\%PROJNAME%-backup-%BVER%
 SET DDIR=%DEVF%\%PROJNAME%
 SET FDIR=%TEMP%\%PROJNAME%-foobar-%BVER%
@@ -32,7 +20,7 @@ echo.
 
 robocopy %DDIR% %FDIR% /MIR /Z
 
-RM -f -r %DDIR%/*
+rm -f -r %DDIR%/*
 
 robocopy %SDIR% %DDIR% /MIR /Z 
 

@@ -1,33 +1,18 @@
-:: Create and clone a project from a TFS Repository
 @echo off
 
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
 CALL %DEVT%\_tfs_LoadSettings.cmd YES
+call C:\bin\development-tools\_ask-project-directory.cmd NO .git %1
+set ERR=%ERRORLEVEL%
+if %ERR% equ 2 goto ALREADYCLONE
+if %ERR% neq 0 exit /b %ERRORLEVEL%
 
-IF "%1" == "" GOTO PROVIDEPROJECT
+goto DOCLONE
 
-SET PROJNAME=%1
-GOTO CONTINUE
+:ALREADYCLONE
 
-:PROVIDEPROJECT
-
-SET PROJNAME=ToolBox2
-
-SET /p NP="What is the name of the project [%PROJNAME%]? "
-IF "" neq "%NP%" SET PROJNAME=%NP% 
-
-:CONTINUE
-
-:: Trim input
-SET PROJNAME=%PROJNAME: =%
-
-SET DDIR=%DEVF%\%PROJNAME%
-
-IF NOT EXIST %DDIR% GOTO DOCLONE
-
-echo.
 echo This project has already been cloned, please delete or rename the project and try again.
 echo.
 

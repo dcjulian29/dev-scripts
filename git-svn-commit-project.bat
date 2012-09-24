@@ -3,47 +3,10 @@
 setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
-
-IF "%1" == "" GOTO PROVIDEPROJECT
-
-SET PROJNAME=%1
-GOTO CONTINUE
-
-:PROVIDEPROJECT
-
-SET PROJNAME=ToolBox2
-
-SET /p NP="What is the name of the project [%PROJNAME%]? "
-IF "" neq "%NP%" SET PROJNAME=%NP% 
-
-:CONTINUE
-
-:: Trim input
-SET PROJNAME=%PROJNAME: =%
-
-SET DDIR=%DEVF%\%PROJNAME%
-
-IF EXIST %DDIR% GOTO UPDATEPROJECT
-
-echo.
-echo This project does not exist.
-echo.
-
-GOTO EOF
-
-:UPDATEPROJECT
+call C:\bin\development-tools\_ask-project-directory.cmd YES .git %1
+if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
 pushd %DEVF%\%PROJNAME%
-
-if exist "%CD%\.git" GOTO GITDIR
-
-echo.
-echo This directory does not contain a GIT repository
-echo.
-echo.
-GOTO EOF
-
-:GITDIR
 
 CALL %DEVT%\git-backup-remove.bat >NUL
 

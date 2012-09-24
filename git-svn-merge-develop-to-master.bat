@@ -3,22 +3,13 @@
 
 setlocal
 
-CALL C:\bin\development-tools\_dev_settings.cmd
+call C:\bin\development-tools\_dev_settings.cmd
+call C:\bin\development-tools\_ask-project-directory.cmd YES .git %1
+if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
-if exist "%CD%\.git" GOTO GITDIR
+pushd %DEVF%\%PROJNAME%
 
-echo.
-echo This directory does not contain a GIT repository
-echo.
-echo.
-GOTO EOF
-
-:GITDIR
-
-SET PROJNAME=
-FOR %%A in (%CD:\= %) DO SET PROJNAME=%%A
-
-SET SDIR=%DEVF%\%PROJNAME%
+set SDIR=%DEVF%\%PROJNAME%
 
 echo.
 echo Updating %PROJNAME% with changes from SVN...
@@ -28,13 +19,13 @@ echo.
 
 %GIT% checkout master
 
-CALL %DEVT%\git-backup-remove.bat >NUL
+call %DEVT%\git-backup-remove.bat >NUL
 
 echo.
 echo Backup project (Just In Case)...
 echo.
 
-CALL %DEVT%\git-backup.bat >NUL
+call %DEVT%\git-backup.bat >NUL
 
 echo.
 echo Updating project from subversion: %PROJNAME%
