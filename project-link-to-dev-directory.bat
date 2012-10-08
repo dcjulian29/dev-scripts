@@ -4,21 +4,8 @@ setlocal
 
 CALL C:\bin\development-tools\_dev_settings.cmd
 
-SET PROJNAME=
-SET PROJDIR=
-
-if "%1" == "" GOTO GETPROJ
-
-SET PROJNAME=%1
-SET PROJDIR=%CD%\%PROJNAME%
-
-GOTO CONT
-
-:GETPROJ
 FOR %%A in (%CD:\= %) DO SET PROJNAME=%%A
 SET PROJDIR=%CD%
-
-:CONT
 
 PUSHD %DEVF%
 
