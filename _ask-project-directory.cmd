@@ -40,7 +40,7 @@ exit /B 1
 
 :NOPROJ
 
-IF NOT EXIST "%DDIR%" GOTO CHECKSCM
+IF NOT EXIST "%DDIR%" GOTO EOF
 
 echo.
 echo The project directory already exists.
@@ -51,11 +51,7 @@ exit /B 2
 :CHECKSCM
 
 if [%2] == [NA] goto EOF
-if not exist "%DDIR%\%2" goto NOSCM
-
-goto EOF
-
-:NOSCM
+if exist "%DDIR%\%2" goto EOF
 
 echo.
 echo This project does not contain the proper source control information.
@@ -72,3 +68,5 @@ echo.
 exit /B 5
 
 :EOF
+
+exit /B 0
