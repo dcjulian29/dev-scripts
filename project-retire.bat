@@ -7,6 +7,9 @@ CALL C:\bin\development-tools\_dev_settings.cmd
 
 IF "%1" == "" GOTO PROVIDEPROJECT
 
+if [%1] == [--this] goto THISDIR
+if [%1] == [-this] goto THISDIR
+
 GOTO CONTINUE
 
 :PROVIDEPROJECT
@@ -21,12 +24,27 @@ GOTO EOF
 
 IF EXIST %DEVF%\%1 GOTO SETUPVAR
 
+:NOPROJ
+
 ECHO.
 ECHO Project directory does not exist.
 ECHO.
 
 GOTO EOF
 
+:THISDIR
+
+IF "%2" == "" GOTO PROVIDEPROJECT
+IF NOT EXIST %CD%\%2 GOTO NOPROJ
+
+SET SDIR=%CD%\%2
+SET DDIR=%DEVR%\%2.7z
+
+IF EXIST %DDIR% GOTO ALREADYRETIRED
+
+pushd %SDIR%
+
+goto DOARCHIVE
 
 :SETUPVAR
 
@@ -39,6 +57,8 @@ SET SDIR=%DEVF%\%PROJNAME%
 SET DDIR=%DEVR%\%PROJNAME%.7z
 
 IF NOT EXIST %DDIR% GOTO DOARCHIVE
+
+:ALREADYRETIRED
 
 echo.
 echo This project has already been retired, please delete or rename the archive and try again.
