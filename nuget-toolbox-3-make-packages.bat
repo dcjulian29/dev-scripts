@@ -10,6 +10,7 @@ pushd %DEVF%\nuget-packages\
 
 CALL %SDIR% ToolBox
 CALL %SDIR% ToolBox.Data.Dataflow
+CALL %SDIR% ToolBox.Data.EntityFramework
 CALL %SDIR% ToolBox.Data.NHibernate
 CALL %SDIR% ToolBox.Wpf
 

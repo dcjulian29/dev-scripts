@@ -20,6 +20,11 @@ copy /Y /V %SDIR%\ToolBox.Data.Dataflow.dll %DDIR%\ToolBox.Data.Dataflow\src\lib
 copy /Y /V %SDIR%\ToolBox.Data.Dataflow.xml %DDIR%\ToolBox.Data.Dataflow\src\lib\net40\
 
 
+:: ToolBox.Data.EntityFramework
+copy /Y /V %SDIR%\ToolBox.Data.EntityFramework.dll %DDIR%\ToolBox.Data.EntityFramework\src\lib\net40\
+copy /Y /V %SDIR%\ToolBox.Data.EntityFramework.xml %DDIR%\ToolBox.Data.EntityFramework\src\lib\net40\
+
+
 :: ToolBox.Data.NHibernate
 copy /Y /V %SDIR%\ToolBox.Data.NHibernate.dll %DDIR%\ToolBox.Data.NHibernate\src\lib\net40\
 copy /Y /V %SDIR%\ToolBox.Data.NHibernate.xml %DDIR%\ToolBox.Data.NHibernate\src\lib\net40\
