@@ -30,18 +30,6 @@ echo Cloning %PROJNAME%...
 pushd %DEVF%\%PROJNAME%
 
 echo.
-echo Fixing tags...
-xcopy /E /I /Y .git\refs\remotes\tags\* .git\refs\tags\
-
-echo.
-echo Removing SVN branches that contain the revision number (ie. trunk@8190)...
-FOR /R .git\refs\remotes %%X IN (*@*) DO (DEL %%X)
-
-echo.
-echo Copying remote branches to local repository...
-xcopy /E /I /Y .git\refs\remotes\* .git\refs\heads\
-
-echo.
 echo Optimizing GIT repository...
 %GIT% repack -d
 %GIT% gc
