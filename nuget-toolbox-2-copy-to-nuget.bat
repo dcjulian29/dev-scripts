@@ -15,6 +15,11 @@ copy /Y /V %SDIR%\ToolBox.xml %DDIR%\ToolBox\src\lib\net40\
 copy /Y /V %SDIR%\ToolBox.chm %DDIR%\ToolBox\src\content\
 
 
+:: ToolBox.Aspects
+copy /Y /V %SDIR%\ToolBox.Aspects.dll %DDIR%\ToolBox.Aspects\src\lib\net40\
+copy /Y /V %SDIR%\ToolBox.Aspects.xml %DDIR%\ToolBox.Aspects\src\lib\net40\
+
+
 :: ToolBox.Data.Dataflow
 copy /Y /V %SDIR%\ToolBox.Data.Dataflow.dll %DDIR%\ToolBox.Data.Dataflow\src\lib\net40\
 copy /Y /V %SDIR%\ToolBox.Data.Dataflow.xml %DDIR%\ToolBox.Data.Dataflow\src\lib\net40\
