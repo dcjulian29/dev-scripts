@@ -8,7 +8,7 @@ echo.
 echo ----- MSBuild Scripts
 echo.
 
-dir /b msbuild*
+dir /b .msbuild\*.xml
 
 echo.
 echo ----- CSharp Project Files
