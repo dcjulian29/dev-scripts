@@ -20,7 +20,9 @@ echo.
 echo Updating project from TFS: %PROJNAME%
 echo.
 
-call %GIT% tfs pull
+call %GIT% tfs fetch
+:: Keep individual changes individual and do not merge...
+call %GIT% rebase tfs/default
 
 echo.
 CHOICE /C:YN /M "Was the update successful"
