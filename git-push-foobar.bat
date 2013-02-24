@@ -1,4 +1,4 @@
-:: Restore the GIT backup over a foobar SVN commit.
+:: Restore the GIT backup over a foobar push attempt
 @echo off
 
 setlocal
