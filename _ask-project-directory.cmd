@@ -1,9 +1,9 @@
 :: %1 -- Should Project Directory exist?
 :: %2 -- SCM folder to exist
 :: %3 -- Project Name
-if "%1" == "" goto ERROR
-if "%2" == "" goto ERROR
-if "%3" == "" goto PROVIDENAME
+if [%1] == [] goto ERROR
+if [%2] == [] goto ERROR
+if [%3] == [] goto PROVIDENAME
 
 set PROJNAME=%3
 goto CONTINUE
@@ -18,8 +18,16 @@ IF "" neq "%NP%" SET PROJNAME=%NP%
 
 :CONTINUE
 
-:: Trim input
-SET PROJNAME=%PROJNAME: =%
+call :TRIMPROJ %PROJNAME%
+goto CHECKDIR
+
+:TRIMPROJ
+
+set PROJNAME=%*
+SET PROJNAME=%PROJNAME:"=%
+goto EOF
+
+:CHECKDIR
 
 SET DDIR=%DEVF%\%PROJNAME%
 
