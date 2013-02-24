@@ -1,0 +1,1 @@
+@C:\bin\diff-dirs.bat "c:\bin\development-tools\Settings\CodeRush\Settings.xml" "%USERPROFILE%\AppData\Roaming\CodeRush for VS .NET\1.1\Settings.xml\"
