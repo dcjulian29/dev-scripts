@@ -16,7 +16,8 @@ GOTO CONT
 
 :JULIAN
 
-set DEVF=D:\dev
+:: On my laptop, I develop projects in multiple directories, so default to current directory.
+set DEVF=%CD%
 set DEVR=D:\archives\dev
 set DEVP=%DEVF%\_postponed
 
