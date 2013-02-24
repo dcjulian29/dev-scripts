@@ -25,18 +25,11 @@ echo.
 echo.
 echo Cloning %PROJNAME%...
 
-%GIT% tfs clone %TFS-URL%/%TFS-COLLECTION% $/%PROJNAME% %DEVF%\%PROJNAME%
+%GIT% tfs clone "%TFS-URL%/%TFS-COLLECTION%" "%TFS-NS%/%PROJNAME%" "%DEVF%\%PROJNAME%"
 
-pushd %DEVF%\%PROJNAME%
+if not exist "%DEVF%\%PROJNAME%" goto REPONOTEXIST
 
-echo.
-echo Fixing tags...
-xcopy /E /I /Y .git\refs\remotes\tags\* .git\refs\tags\
-
-echo.
-echo.
-echo Copying remote branches to local repository...
-xcopy /E /I /Y .git\refs\remotes\* .git\refs\heads\
+pushd "%DEVF%\%PROJNAME%"
 
 echo.
 echo Optimizing GIT repository...
@@ -45,8 +38,17 @@ echo Optimizing GIT repository...
 
 popd
 
+:DONE
+
 echo.
 echo Done.
+echo.
+
+goto EOF
+
+:REPONOTEXIST
+
+echo The repository directory does not exist. Please check to see if clone was successful.
 echo.
 
 :EOF

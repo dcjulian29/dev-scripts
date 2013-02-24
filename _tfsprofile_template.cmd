@@ -1,3 +1,3 @@
-set TFS-AUTHORSFILE=
 set TFS-URL=
 set TFS-COLLECTION=
+set TFS-NS=
