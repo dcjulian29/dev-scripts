@@ -1,0 +1,2 @@
+set OCTOPUS-URL=
+set OCTOPUS-API=
