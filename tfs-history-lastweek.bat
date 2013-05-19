@@ -12,6 +12,8 @@ set TODAY=%date:~-7,2%
 set TODAY=%TODAY:0=%
 set DAYOFWEEK=%date:~0,3%
 
+if %TODAY% LEQ 7 echo This script has a know issue when "last week" is in "last month"...
+
 if %DAYOFWEEK% == Mon set DAYOFWEEK=0
 if %DAYOFWEEK% == Tue set DAYOFWEEK=1
 if %DAYOFWEEK% == Wed set DAYOFWEEK=2
@@ -22,6 +24,9 @@ if %DAYOFWEEK% == Sun set DAYOFWEEK=6
 
 set /A "FROMDAY=FROMDAY-DAYOFWEEK"
 set /A "TODAY=TODAY+1"
+
+set /A "FROMDAY=FROMDAY-7"
+set /A "TODAY=TODAY-DAYOFWEEK"
 
 set FILTER=/version:D%YEAR%-%MONTH%-%FROMDAY%~D%YEAR%-%MONTH%-%TODAY%
 
