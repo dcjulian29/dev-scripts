@@ -1,1 +1,0 @@
-@C:\bin\diff-dirs.bat "c:\bin\development-tools\Settings\CodeRush\PlugIns" "%USERPROFILE%\Documents\DevExpress\IDE Tools\Community\PlugIns"
