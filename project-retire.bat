@@ -1,4 +1,3 @@
-:: Retire a development project
 @echo off
 
 setlocal
@@ -67,7 +66,7 @@ GOTO EOF
 
 :DOARCHIVE
 
-POPD
+popd
 
 echo.
 echo Retiring %PROJNAME%...
@@ -84,6 +83,8 @@ echo.
 
 %ZIP% a -t7z -mx9 -y -r  %DDIR% %SDIR%
 
-RMDIR /Q /S %SDIR%
+if [%SDIR%] == [%CD%] cd ..
+
+rmdir /Q /S %SDIR%
 
 :EOF
