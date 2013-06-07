@@ -16,9 +16,12 @@ GOTO CONT
 
 :JULIAN
 
-:: On my laptop, I develop projects in multiple directories, so default to current directory.
+:: On my laptop, I develop projects in multiple directories,
+::    so default to the parent of the current directory.
+pushd ..
 set DEVF=%CD%
-set DEVR=D:\archives\dev
+popd
+set DEVR=D:\_archives\dev
 set DEVP=%DEVF%\_postponed
 
 if exist %TEMP%\dropbox-dev goto DROPBOX
@@ -59,7 +62,8 @@ SET SVN=%SVN_INSTALL_ROOT%\bin\svn.exe
 SET GIT_INSTALL_ROOT=%DEVT%\msysgit
 SET GIT=%GIT_INSTALL_ROOT%\bin\git.exe
 
-SET ZIP="C:\Program Files\7-Zip\7z.exe"
+::SET ZIP="C:\Program Files\7-Zip\7z.exe"
+set ZIP="C:\bin\File\7-Zip\App\7-Zip\7z.exe"
 SET NANT=%DEVT%\nant\bin\NAnt.exe
 SET NUNIT=%DEVT%\nunit\bin\nunit-console-x86.exe
 SET NSIS=%DEVT%\nsis\nsis.exe
