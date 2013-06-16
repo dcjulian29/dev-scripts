@@ -1,1 +1,1 @@
-@dir C:\bin\development-tools\*.bat /d /p
+@dir C:\bin\development-tools\%1*.bat /d /p
