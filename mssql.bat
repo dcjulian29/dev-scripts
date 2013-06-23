@@ -47,10 +47,10 @@ goto EOF
 if %ERRORLEVEL% == 1060 goto NOSQL
 
 
-%SC% query mssqlserver | find "RUNNING" > nul
+%SC% query mssqlserver | %WINDIR%\System32\find.exe "RUNNING" > nul
 If %ERRORLEVEL% NEQ 0 goto NOTRUNNING
 
-%SC% query mssql$sqlexpress | find "RUNNING" > nul
+%SC% query mssql$sqlexpress | %WINDIR%\System32\find.exe "RUNNING" > nul
 If %ERRORLEVEL% NEQ 0 goto NOTRUNNING
 
 echo SQL Server is running...
@@ -91,7 +91,7 @@ goto EOF
 if %ERRORLEVEL% == 1060 goto EOF
 
 
-%SC% query %1 | find "%2" > nul
+%SC% query %1 | %WINDIR%\System32\find.exe "%2" > nul
 If %ERRORLEVEL% NEQ 0 goto EOF
 
 net %3 %1
