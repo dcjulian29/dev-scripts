@@ -2,6 +2,32 @@
 
 setlocal
 
-call C:\bin\development-tools\_dev_settings.cmd
+call %SYSTEMDRIVE%\bin\development-tools\_dev_settings.cmd
 
-%DEVT%\nuget\nuget.exe pack package.nuspec -Verbosity detailed
+set PKG=
+
+if [%1] EQU [] GOTO DEFAULTPACKAGE
+
+set PKG=%1
+
+goto PROCEED
+
+:DEFAULTPACKAGE
+
+set PKG=package.nuspec
+
+:PROCEED
+
+if exist "%PKG%" GOTO PUBLISH
+
+echo.
+echo The specified package specification does not exists.
+echo.
+
+goto EOF
+
+:PACKAGE
+
+%DEVT%\nuget\nuget.exe pack %PKG% -Verbosity detailed
+
+endlocal
