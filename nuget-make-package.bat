@@ -18,7 +18,7 @@ set PKG=package.nuspec
 
 :PROCEED
 
-if exist "%PKG%" GOTO PUBLISH
+if exist "%PKG%" GOTO PACKAGE
 
 echo.
 echo The specified package specification does not exists.
