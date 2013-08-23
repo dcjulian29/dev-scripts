@@ -1,4 +1,4 @@
-::@echo off
+@echo off
 
 setlocal
 
@@ -10,10 +10,12 @@ set SC=%WINDIR%\System32\sc.exe
 if [%1] == [START] goto PARSED-START
 if [%1] == [STOP] goto PARSED-STOP
 if [%1] == [QUERY] goto PARSED-QUERY
+if [%1] == [CLIENT] goto PARSED-CLIENT
 
 if [%1] == [start] goto PARSED-START
 if [%1] == [stop] goto PARSED-STOP
 if [%1] == [query] goto PARSED-QUERY
+if [%1] == [client] goto PARSED-CLIENT
 
 goto HELP
 
@@ -90,13 +92,19 @@ net %3 %1
 
 goto EOF
 
+:PARSED-CLIENT
+
+"%SYSTEMDRIVE%\Program Files\MongoDB\bin\mongo.exe"
+
+goto EOF
+
 :HELP
 
 echo.
-echo MongoDB Server Helper Script
+echo Server Helper Script
 echo.
 echo This script helps to automate and script functions related to the MongoDB Server Service.
 echo.
-echo Usage: %0 [START^|STOP^|QUERY]
+echo Usage: %0 [START^|STOP^|QUERY^|CLIENT]
 
 :EOF
