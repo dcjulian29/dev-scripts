@@ -1,9 +1,12 @@
 @echo off
+setlocal
+call %~dp0_dev_settings.cmd
 
 call %SYSTEMDRIVE%\bin\_isElevated.cmd YES "%0" %*
+
 if %ERRORLEVEL% NEQ 99 goto EOF
 
-set XSD=C:\bin\development-tools\xsd\*.xsd
+set XSD=%DEVT%\xsd\*.xsd
 
 call :UPDATE 8
 call :UPDATE 9
@@ -28,3 +31,5 @@ echo.
 xcopy /R /Y "%XSD%" "%DIR%"
 
 :EOF
+
+endlocal

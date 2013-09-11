@@ -1,12 +1,12 @@
 @echo off
-
 setlocal
+call %~dp0_dev_settings.cmd
 
 call %SYSTEMDRIVE%\bin\path-java.bat
 
-set PATH=%SystemDrive%\bin\development-tools\DocBook\xxe\bin;%PATH%
+set PATH=%DEVT%\DocBook\xxe\bin;%PATH%
 
-pushd %SystemDrive%\bin\development-tools\DocBook\xxe\bin\
+pushd %DEVT%\DocBook\xxe\bin\
 
 xxe.bat %*
 
