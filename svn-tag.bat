@@ -1,9 +1,7 @@
-:: tag a project with a version string
 @echo off
-
 setlocal
+call %~dp0_dev_settings.cmd
 
-CALL C:\bin\development-tools\_dev_settings.cmd
 CALL %DEVT%\_svn_LoadSettings.cmd YES
 
 SET TAGVER=v%date:~-4,4%%date:~-10,2%%date:~-7,2%

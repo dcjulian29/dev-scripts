@@ -1,9 +1,7 @@
-:: branch a project
 @echo off
-
 setlocal
+call %~dp0_dev_settings.cmd
 
-CALL C:\bin\development-tools\_dev_settings.cmd
 CALL %DEVT%\_svn_LoadSettings.cmd YES
 
 SET BRANCH=v%date:~-4,4%%date:~-7,2%%date:~-10,2%

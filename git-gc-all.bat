@@ -1,13 +1,12 @@
-@ECHO OFF
-:: Do a Garbage Collection on all GIT projects.
-
-CALL C:\bin\development-tools\_dev_settings.cmd
+@echo off
+setlocal
+call %~dp0_dev_settings.cmd
 
 ECHO.
 ECHO Executing a Garbage Collection for GIT projects...
 ECHO.
 
-FOR /d %%D in (%DEVF%\*) DO (
+FOR /d %%D in (%CD%\*) DO (
   IF EXIST %%D\.git (
     ECHO == %%D
     echo.

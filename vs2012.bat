@@ -1,2 +1,7 @@
 @echo off
-%SYSTEMDRIVE%\bin\development-tools\vs-common.cmd 2012 %*
+setlocal
+call %~dp0_dev_settings.cmd
+
+%DEVT%\vs-common.cmd 2012 %*
+
+endlocal

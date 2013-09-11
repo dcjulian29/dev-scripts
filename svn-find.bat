@@ -1,9 +1,7 @@
-:: find a project with a non-case sensitive search
 @echo off
-
 setlocal
+call %~dp0_dev_settings.cmd
 
-CALL C:\bin\development-tools\_dev_settings.cmd
 CALL %DEVT%\_svn_LoadSettings.cmd YES
 
 SET PROJNAME=%1

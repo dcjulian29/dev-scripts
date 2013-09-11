@@ -1,10 +1,8 @@
-:: Restore the GIT backup over a foobar push attempt
 @echo off
-
 setlocal
+call %~dp0_dev_settings.cmd
 
-CALL C:\bin\development-tools\_dev_settings.cmd
-call C:\bin\development-tools\_ask-project-directory.cmd YES .git %1
+call %DEVT%\_ask-project-directory.cmd YES .git %1
 if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
 SET BVER=%date:~-4,4%%date:~-10,2%%date:~-7,2%

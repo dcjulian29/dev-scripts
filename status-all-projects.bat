@@ -1,11 +1,9 @@
-@ECHO OFF
-:: Do a SVN Status on all SVN project in the PROJECTS folder
-
+@echo off
 setlocal
-CALL C:\bin\development-tools\_dev_settings.cmd
+call %~dp0_dev_settings.cmd
 
 ECHO.
-ECHO Showing status for SVN projects...
+ECHO Showing status for all projects in this directory...
 ECHO.
 
 FOR /d %%D in (%DEVF%\*) DO (

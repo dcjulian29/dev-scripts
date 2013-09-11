@@ -1,9 +1,9 @@
-@ECHO OFF
+@echo off
+setlocal
+call %~dp0_dev_settings.cmd
+
 :: Show various information about this git directory
 :: Based on discussion at http://kerneltrap.org/mailarchive/git/2007/11/12/406496
-
-setlocal
-CALL C:\bin\development-tools\_dev_settings.cmd
 
 pushd
 

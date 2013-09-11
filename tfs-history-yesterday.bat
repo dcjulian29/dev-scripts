@@ -1,8 +1,6 @@
 @echo off
-
 setlocal
-
-call C:\bin\development-tools\_dev_settings.cmd
+call %~dp0_dev_settings.cmd
 
 set YEAR=%date:~-4,4%
 set MONTH=%date:~-10,2%

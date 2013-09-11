@@ -1,10 +1,10 @@
 @echo off
-
 setlocal
+call %~dp0_dev_settings.cmd
 
-CALL C:\bin\development-tools\_dev_settings.cmd
-CALL %DEVT%\_tfs_LoadSettings.cmd YES
-call C:\bin\development-tools\_ask-project-directory.cmd NO .git %1
+call %DEVT%\_tfs_LoadSettings.cmd YES
+call %DEVT%\_ask-project-directory.cmd NO .git %1
+
 set ERR=%ERRORLEVEL%
 if %ERR% equ 2 goto ALREADYCLONE
 if %ERR% neq 0 exit /b %ERRORLEVEL%

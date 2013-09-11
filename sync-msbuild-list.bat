@@ -1,8 +1,6 @@
 @echo off
-
 setlocal
-
-CALL C:\bin\development-tools\_dev_settings.cmd
+call %~dp0_dev_settings.cmd
 
 echo.
 echo ----- MSBuild Scripts

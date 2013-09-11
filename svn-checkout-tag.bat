@@ -1,10 +1,10 @@
 @echo off
-
 setlocal
+call %~dp0_dev_settings.cmd
 
-CALL C:\bin\development-tools\_dev_settings.cmd
 CALL %DEVT%\_svn_LoadSettings.cmd YES
-call C:\bin\development-tools\_ask-project-directory.cmd NO .svn %1
+call %DEVT%\_ask-project-directory.cmd NO .svn %1
+
 if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
 SET /p TAGVER="What tag do you what to checkout? "

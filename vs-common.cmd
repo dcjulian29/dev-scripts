@@ -1,5 +1,5 @@
 setlocal
-call C:\bin\development-tools\_dev_settings.cmd
+call %~dp0_dev_settings.cmd
 
 if [%1] NEQ [] goto C1
 
@@ -122,3 +122,5 @@ goto EOF
 start "" "%PDIR%\devenv.exe" %SLN% /log
 
 :EOF
+
+endlocal

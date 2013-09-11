@@ -1,8 +1,7 @@
 @echo off
-
 setlocal
+call %~dp0_dev_settings.cmd
 
-CALL C:\bin\development-tools\_dev_settings.cmd
 
 if exist "%CD%\.git" GOTO GITDIR
 
