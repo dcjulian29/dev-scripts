@@ -15,5 +15,5 @@ set JAVA_OPTS=%JAVA_OPTS% -Dwsi.dir="%SOAPUI_HOME%..\wsi-test-tools"
 set JAVA_OPTS=%JAVA_OPTS% -Dsoapui.jxbrowser.disable="true"
 
 pushd %SOAPUI_HOME%
-call %SYSTEMDRIVE%\bin\run-java java %JAVA_OPTS% com.eviware.soapui.SoapUI
+call %SYSTEMDRIVE%\bin\run-javaw  %JAVA_OPTS% com.eviware.soapui.SoapUI
 popd
