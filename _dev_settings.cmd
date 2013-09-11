@@ -5,7 +5,7 @@ popd
 set DEVR=D:\_archives\dev
 set DEVP=%DEVF%\_postponed
 
-for /f "usebackq delims=" %%O in (`where %0`) do set DEVT=%%~dpO
+for /f "usebackq delims=" %%O in (`where %~n0`) do set DEVT=%%~dpO
 
 SET SVN_INSTALL_ROOT=%DEVT%\svn
 SET SVN=%SVN_INSTALL_ROOT%\bin\svn.exe
