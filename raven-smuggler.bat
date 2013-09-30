@@ -1,0 +1,1 @@
+@%~dp0\RavenDb\Raven.Smuggler.exe %*
