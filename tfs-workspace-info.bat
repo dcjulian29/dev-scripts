@@ -6,6 +6,7 @@ call %DEVT%\_tfs_LoadSettings.cmd YES
 call %DEVT%\_tfs_Command.cmd
 
 set TFCMD=%TFCMD% workspaces
+set TFCMD=%TFCMD% /collection:"%TFS-URL%/%TFS-COLLECTION%" /format:detailed
 
 %TFCMD%
 
