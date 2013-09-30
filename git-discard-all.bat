@@ -2,7 +2,7 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
-call %DEVT%\_ask-project-directory.cmd YES .git %1
+call %DEVT%\_check-scm.cmd .git
 if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
 
@@ -17,8 +17,6 @@ GOTO EOF
 
 :DISCARDWORK
 
-pushd %DDIR%
-
 echo.
 echo Discarding all changes in this project...
 echo.
@@ -27,6 +25,6 @@ echo.
 %git% stash save --keep-index
 %git% stash drop
 
-popd
-
 :EOF
+
+endlocal
