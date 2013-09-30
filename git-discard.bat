@@ -2,15 +2,8 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
-if exist "%CD%\.git" GOTO GITDIR
-
-echo.
-echo This directory does not contain a GIT repository
-echo.
-echo.
-GOTO EOF
-
-:GITDIR
+call %DEVT%\_check-scm.cmd .git
+if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
 IF "%1" == "" GOTO PROVIDEFILE
 IF NOT EXIST %1 GOTO FILEERROR
@@ -38,3 +31,5 @@ GOTO EOF
 %git% checkout %1
 
 :EOF
+
+endlocal
