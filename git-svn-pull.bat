@@ -2,10 +2,8 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
-call %DEVT%\_ask-project-directory.cmd YES .git %1
+call %DEVT%\_check-scm.cmd .git
 if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
-
-pushd %DEVF%\%PROJNAME%
 
 call %DEVT%\git-backup-remove.bat >NUL
 
@@ -28,6 +26,6 @@ echo.
 
 if %RESULT% EQU 1 call %DEVT%\git-backup-remove.bat
 
-popd
-
 :EOF
+
+endlocal
