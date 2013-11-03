@@ -2,10 +2,12 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
-set PROJNAME=
-for %%A in (%CD:\= %) do set PROJNAME=%%A
+call %DEVT%\_ask-project-name.cmd YES %1
 
-set SDIR=%DEVF%\%PROJNAME%
+set ERR=%ERRORLEVEL%
+if %ERR% neq 0 exit /b %ERRORLEVEL%
+
+set SDIR=%DDIR%
 set DDIR=%DEVR%\%PROJNAME%.7z
 
 if not exist %DDIR% goto DOARCHIVE
@@ -17,8 +19,8 @@ GOTO EOF
 
 :DOARCHIVE
 
+cd %SDIR%
 call %DEVT%\project-clean.bat
-
 cd ..
 
 echo.

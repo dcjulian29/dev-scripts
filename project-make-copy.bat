@@ -2,12 +2,14 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
-set PROJNAME=
-for %%A in (%CD:\= %) do set PROJNAME=%%A
+call %DEVT%\_ask-project-name.cmd YES %1
+
+set ERR=%ERRORLEVEL%
+if %ERR% neq 0 exit /b %ERRORLEVEL%
 
 set FVER=%date:~-4,4%%date:~-10,2%%date:~-7,2%
-set SDIR=%DEVF%\%PROJNAME%
-set DDIR=%DEVR%\%PROJNAME%.%FVER%.7z
+set SDIR=%DDIR%
+set DDIR=%SDIR%\..\%PROJNAME%.%FVER%.7z
 
 if not exist %DDIR% goto DOCOPY
 
@@ -18,7 +20,9 @@ goto EOF
 
 :DOCOPY
 
+cd %SDIR%
 call %DEVT%\project-clean.bat
+cd ..
 
 echo.
 echo Copying %PROJNAME% to %DDIR%...
