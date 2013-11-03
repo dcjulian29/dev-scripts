@@ -9,19 +9,26 @@ set DEVP=%DEVF%\_postponed
 
 for /f "usebackq delims=" %%O in (`where %~n0`) do set DEVT=%%~dpO
 
-SET SVN_INSTALL_ROOT=%DEVT%\svn
-SET SVN=%SVN_INSTALL_ROOT%\bin\svn.exe
-PATH %SVN_INSTALL_ROOT%\bin;%PATH%
+set PDIR="%ProgramFiles(x86)%"
+if [%PDIR%] == [""] goto B32
 
-SET GIT_INSTALL_ROOT=%DEVT%\msysgit
-SET GIT=%GIT_INSTALL_ROOT%\bin\git.exe
-PATH %GIT_INSTALL_ROOT%\bin;%PATH%
+goto CONT
+
+:B32
+
+set PDIR="%ProgramFiles%"
+
+:CONT
+
+set GIT_INSTALL_ROOT=%PDIR%\Git
+set GIT="%GIT_INSTALL_ROOT%\bin\git.exe"
+path "%GIT_INSTALL_ROOT%\bin";%PATH%
 
 set ZIP="C:\bin\File\7-Zip\App\7-Zip\7z.exe"
-SET NANT=%DEVT%\nant\bin\NAnt.exe
-SET NUNIT=%DEVT%\nunit\bin\nunit-console-x86.exe
-SET NSIS=%DEVT%\nsis\nsis.exe
-SET DOBUDISH=%DEVT%\DocBook\dobudish.cmd
+set NANT=%DEVT%\nant\bin\NAnt.exe
+set NUNIT=%DEVT%\nunit\bin\nunit-console-x86.exe
+set NSIS=%DEVT%\nsis\nsis.exe
+set DOBUDISH=%DEVT%\DocBook\dobudish.cmd
 
 :: "Retirement" Directory where projects go to die...
 set DEVR=D:\_archives\dev
