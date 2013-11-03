@@ -21,9 +21,9 @@ echo.
 echo Discarding all changes in this project...
 echo.
 
-%git% reset HEAD
-%git% stash save --keep-index
-%git% stash drop
+"%GIT%" reset HEAD
+"%GIT%" stash save --keep-index
+"%GIT%" stash drop
 
 :EOF
 

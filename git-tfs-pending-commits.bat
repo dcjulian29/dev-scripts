@@ -12,7 +12,7 @@ echo.
 echo Pending commits to push to TFS:
 echo.
 
-%GIT% rev-list HEAD --not --remotes --pretty
+"%GIT%" rev-list HEAD --not --remotes --pretty
 
 popd
 

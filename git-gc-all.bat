@@ -11,7 +11,7 @@ FOR /d %%D in (%CD%\*) DO (
     ECHO == %%D
     echo.
     pushd %%D
-    %GIT% gc
+    "%GIT%" gc
     popd
   )
   ECHO.

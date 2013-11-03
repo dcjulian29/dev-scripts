@@ -12,23 +12,19 @@ pushd
 
 IF EXIST %CD%\.git (
   ECHO == Remote URLs:
-  %GIT% remote -v
+  "%GIT%" remote -v
   ECHO.
 
-  ECHO == Remote Branches:
-  %GIT% branch -r
+  ECHO == Branches:
+  "%GIT%" branch -a
   ECHO.
 
-  ECHO == Local Branches:
-  %GIT% branch
-  ECHO.
-
-  ECHO == Configuration: .git/config
-  TYPE %CD%\.git\config
+  ECHO == Configuration:
+  "%GIT%" config --local --list
   ECHO.
 
   echo == Most Recent Commit
-  %GIT% --no-pager log --max-count=1
+  "%GIT%" --no-pager log --max-count=1
   ECHO.
 
   ECHO Type 'git log' for more commits, or 'git show' for full commit details.

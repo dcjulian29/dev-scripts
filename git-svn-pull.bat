@@ -17,7 +17,7 @@ echo.
 echo Updating project from subversion: %PROJNAME%
 echo.
 
-call %GIT% svn rebase
+call "%GIT%" svn rebase
 
 echo.
 CHOICE /C:YN /M "Was the update successful"

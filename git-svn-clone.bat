@@ -25,14 +25,14 @@ echo.
 echo.
 echo Cloning %PROJNAME%...
 
-%GIT% svn clone %SVN-URL%/%PROJNAME% --authors-file=%DEVT:\=/%%SVN-AUTHORSFILE% -s --prefix=svn/ %CD%\%PROJNAME%
+"%GIT%" svn clone %SVN-URL%/%PROJNAME% --authors-file=%DEVT:\=/%%SVN-AUTHORSFILE% -s --prefix=svn/ %CD%\%PROJNAME%
 
 pushd %CD%\%PROJNAME%
 
 echo.
 echo Optimizing GIT repository...
-%GIT% repack -d
-%GIT% gc
+"%GIT%" repack -d
+"%GIT%" gc
 
 popd
 

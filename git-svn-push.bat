@@ -17,7 +17,7 @@ echo.
 echo Commiting project to subversion: %PROJNAME%
 echo.
 
-call %GIT% svn dcommit --rmdir
+call "%GIT%" svn dcommit --rmdir
 
 echo.
 CHOICE /C:YN /M "Was the commit successful"

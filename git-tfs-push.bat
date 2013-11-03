@@ -24,7 +24,7 @@ set TFS-COMMAND=tfs rcheckin
 ::if [%2] neq [] set TFS-COMMAND=%TFS-COMMAND% --work-item %2
 :: With multiple local commits being pushed to TFS, the work-item gets set on
 :: the first commit... might be better to use checkintool for this situation
-call %GIT% %TFS-COMMAND%
+call "%GIT%" %TFS-COMMAND%
 
 echo.
 choice /C:YN /M "Was the commit successful"

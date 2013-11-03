@@ -25,7 +25,7 @@ echo.
 echo.
 echo Cloning %PROJNAME%...
 
-%GIT% tfs clone "%TFS-URL%/%TFS-COLLECTION%" "%TFS-NS%/%PROJNAME%" "%DEVF%\%PROJNAME%"
+"%GIT%" tfs clone "%TFS-URL%/%TFS-COLLECTION%" "%TFS-NS%/%PROJNAME%" "%DEVF%\%PROJNAME%"
 
 if not exist "%DEVF%\%PROJNAME%" goto REPONOTEXIST
 
@@ -33,8 +33,8 @@ pushd "%DEVF%\%PROJNAME%"
 
 echo.
 echo Optimizing GIT repository...
-%GIT% repack -d
-%GIT% gc
+"%GIT%" repack -d
+"%GIT%" gc
 
 popd
 
