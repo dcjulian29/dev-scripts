@@ -13,7 +13,7 @@ echo.
 echo Work items for %FULLNAME% from %TFS-URL%/%TFS-COLLECTION%...
 echo.
 
-%PSHELL% "Get-TfsServer %TFS-URL% %TFS-COLLECTION% | Get-TfsWorkItem -User '%FULLNAME%'"
+%PSHELL% "Get-TfsServer %TFS-URL% %TFS-COLLECTION% | Get-TfsWorkItem -User '%FULLNAME%'" -ExcludeResolved -ExcludeClosed
 
 echo.
 
