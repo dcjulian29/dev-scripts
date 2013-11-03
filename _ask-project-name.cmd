@@ -9,11 +9,11 @@ goto CONTINUE
 
 :PROVIDENAME
 
-SET PROJNAME=
-FOR %%A in (%CD:\= %) DO SET PROJNAME=%%A
-
-SET /p NP="What is the name of the project [%PROJNAME%]? "
-IF "" neq "%NP%" SET PROJNAME=%NP% 
+set PROJNAME=
+for %%A in (%CD:\= %) do set PROJNAME=%%A
+set OPNAME=%PROJNAME%
+set /p NP="What is the name of the project [%PROJNAME%]? "
+if "" neq "%NP%" set PROJNAME=%NP% 
 
 :CONTINUE
 
@@ -23,12 +23,13 @@ goto CHECKDIR
 :TRIMPROJ
 
 set PROJNAME=%*
-SET PROJNAME=%PROJNAME:"=%
+set PROJNAME=%PROJNAME:"=%
 goto EOF
 
 :CHECKDIR
 
-SET DDIR=%CD%\%PROJNAME%
+set DDIR=%CD%\%PROJNAME%
+if [%OPNAME%] == [%PROJNAME%] set DDIR=%CD%
 
 :: Should project directory exist?
 IF [%1] == [YES] GOTO YESPROJ
