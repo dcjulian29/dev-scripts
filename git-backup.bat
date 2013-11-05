@@ -12,20 +12,17 @@ GOTO EOF
 
 :GITDIR
 
-SET BVER=%date:~-4,4%%date:~-10,2%%date:~-7,2%
+set BVER=%date:~-4,4%%date:~-10,2%%date:~-7,2%
 
-SET PROJNAME=
-FOR %%A in (%CD:\= %) DO SET PROJNAME=%%A
+set SDIR=%CD%
+set DDIR=%TEMP%\%PROJNAME%-backup-%BVER%
 
-SET SDIR=%DEVF%\%PROJNAME%
-SET DDIR=%TEMP%\%PROJNAME%-backup-%BVER%
-
-IF NOT EXIST %DDIR% GOTO DOBACK
+if not exist %DDIR% goto DOBACK
 
 echo.
 echo This project already has a backup for today, please delete the backup and try again.
 echo.
-GOTO EOF
+goto EOF
 
 :DOBACK
 
@@ -33,7 +30,7 @@ echo.
 echo Backing up %PROJNAME%...
 echo.
 
-MKDIR %DDIR%
+mkdir %DDIR%
 
 robocopy %SDIR% %DDIR% /MIR /Z /SL /MT /XJ /R:5 /W:5
 
