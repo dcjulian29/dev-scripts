@@ -7,7 +7,7 @@ call %~dp0_dev_settings.cmd
 if [%1] NEQ [] goto CHECK
 
 echo.
-echo Please provide the solution/csproj file to clean.
+echo Please provide the solution/csproj file to build.
 echo.
 
 goto EOF
@@ -31,7 +31,7 @@ goto EOF
 if [%2] EQU [release] goto RELEASE
 if [%2] EQU [RELEASE] goto RELEASE
 
-%MSBUILD% "%SLN%" /m /t:clean /p:configuration="Debug"
+%MSBUILD% "%SLN%" /m /t:rebuild /p:configuration="Debug" /v:minimal
 
 goto EOF
 
@@ -39,7 +39,7 @@ goto EOF
 
 echo.
 echo.
-%MSBUILD% "%SLN%" /m /t:clean /p:configuration="Release"
+%MSBUILD% "%SLN%" /m /t:rebuild /p:configuration="Release" /v:minimal
 
 :EOF
 
