@@ -42,3 +42,8 @@ for /D %%D in (%SYSTEMROOT%\Microsoft.NET\Framework\v*) do (
 for /D %%D in (%SYSTEMROOT%\Microsoft.NET\Framework64\v*) do (
   if exist %%D\MSBuild.exe set MSBUILD=%%D\MSBuild.exe
 )
+
+:: As of 4.5.1 (VS 2013), MSBuild has been removed from the "framework" and added to its own MSBuild tool
+for /D %%D in ("C:\Program Files (x86)\MSBuild\*") do (
+  if exist %%D\bin\MSBuild.exe set MSBUILD="%%D\bin\MSBuild.exe"
+)
