@@ -2,43 +2,43 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
-IF NOT "%1" == "" GOTO C1
+if not "%1" == "" goto C1
 
-ECHO.
-ECHO Please provide the custom msbuild file name.
-ECHO.
+echo.
+echo Please provide the custom msbuild file name.
+echo.
 
-GOTO EOF
+goto EOF
 
 :C1
 
-IF NOT "%2" == "" GOTO C2
+if not "%2" == "" goto C2
 
-ECHO.
-ECHO Please provide the Visual Studio CSPROJ file name.
-ECHO.
+echo.
+echo Please provide the Visual Studio CSPROJ file name.
+echo.
 
-GOTO EOF
+goto EOF
 
 :C2
 
-IF EXIST %1 GOTO C3
+if exist %1 goto C3
 
-ECHO.
-ECHO Custom msbuild file does not exist.
-ECHO.
+echo.
+echo Custom msbuild file does not exist.
+echo.
 
-GOTO EOF
+goto EOF
 
 :C3
 
-IF EXIST %2 GOTO C4
+if exist %2 goto C4
 
-ECHO.
-ECHO Visual Studio CSPROJ file does not exist.
-ECHO.
+echo.
+echo Visual Studio CSPROJ file does not exist.
+echo.
 
-GOTO EOF
+goto EOF
 
 :C4
 
@@ -46,34 +46,34 @@ echo.
 echo Comparing %1 to %2...
 echo.
 
-SET FIND=%WINDIR%\System32\find.exe
-SET NFIND=%FIND% /V
-SET SORT=%WINDIR%\System32\sort.exe
-SET PSHELL=PowerShell -NoLogo -NoProfile -NonInteractive -Command
+set FIND=%WINDIR%\System32\find.exe
+set NFIND=%FIND% /V
+set SORT=%WINDIR%\System32\sort.exe
+set PSHELL=call %SYSTEMDRIVE%\Tools\binaries\pshell.cmd 
 
-SET BAI=buildAssemblyInfo.cs
-SET COMPILE=^<Compile Include=""
-SET REFERENCE=^<Reference Include=""
-SET WCF=^<Compile Include=""Service References\
-SET WS=^<Compile Include=""Web References\
-SET RESOURCE=^<EmbeddedResource Include=""
+set BAI=buildAssemblyInfo.cs
+set COMPILE=^<Compile Include=""
+set REFERENCE=^<Reference Include=""
+set WCF=^<Compile Include=""Service References\
+set WS=^<Compile Include=""Web References\
+set RESOURCE=^<EmbeddedResource Include=""
 
-SET T1C=%TEMP%\sync-msbuild-1C.txt
-SET T2C=%TEMP%\sync-msbuild-2C.txt
+set T1C=%TEMP%\sync-msbuild-1C.txt
+set T2C=%TEMP%\sync-msbuild-2C.txt
 
-SET T1R=%TEMP%\sync-msbuild-1R.txt
-SET T2R=%TEMP%\sync-msbuild-2R.txt
+set T1R=%TEMP%\sync-msbuild-1R.txt
+set T2R=%TEMP%\sync-msbuild-2R.txt
 
-SET T1W=%TEMP%\sync-msbuild-1W.txt
-SET T2W=%TEMP%\sync-msbuild-2W.txt
+set T1W=%TEMP%\sync-msbuild-1W.txt
+set T2W=%TEMP%\sync-msbuild-2W.txt
 
-SET T1WS=%TEMP%\sync-msbuild-1WS.txt
-SET T2WS=%TEMP%\sync-msbuild-2WS.txt
+set T1WS=%TEMP%\sync-msbuild-1WS.txt
+set T2WS=%TEMP%\sync-msbuild-2WS.txt
 
-SET T1ER=%TEMP%\sync-msbuild-1ER.txt
-SET T2ER=%TEMP%\sync-msbuild-2ER.txt
+set T1ER=%TEMP%\sync-msbuild-1ER.txt
+set T2ER=%TEMP%\sync-msbuild-2ER.txt
 
-SET FT=Format-Table -HideTableHeaders
+set FT=Format-Table -HideTableHeaders
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -186,5 +186,7 @@ for /f "tokens=1 delims=," %%i in (%T2ER%.orignal) do echo %%i >> %T2ER%
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 echo.
+
+endlocal
 
 :EOF
