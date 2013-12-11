@@ -1,1 +1,0 @@
-@start %SYSTEMDRIVE%\bin\File\WinMerge\WinMergePortable.exe %*
