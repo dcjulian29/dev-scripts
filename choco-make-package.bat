@@ -28,4 +28,6 @@ goto EOF
 
 chocolatey pack "%PKG% -Verbosity detailed"
 
+:EOF
+
 endlocal
