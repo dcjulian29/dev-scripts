@@ -2,7 +2,7 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
-call %SYSTEMDRIVE%\bin\_isElevated.cmd YES "%0" %*
+call %SYSTEMDRIVE%\Tools\binaries\_isElevated.cmd YES "%0" %*
 
 if %ERRORLEVEL% NEQ 99 goto EOF
 
@@ -12,6 +12,7 @@ call :UPDATE 8
 call :UPDATE 9
 call :UPDATE 10
 call :UPDATE 11
+call :UPDATE 12
 
 pause
 
