@@ -24,15 +24,11 @@ set GIT_INSTALL_ROOT=%PDIR%\Git
 set GIT="%GIT_INSTALL_ROOT%\bin\git.exe"
 path "%GIT_INSTALL_ROOT%\bin";%PATH%
 
-set ZIP="C:\bin\File\7-Zip\App\7-Zip\7z.exe"
+set ZIP="%SYSTEMDRIVE%\Tools\binaries\7Zip.cmd"
 set NANT=%DEVT%\nant\bin\NAnt.exe
 set NUNIT=%DEVT%\nunit\bin\nunit-console-x86.exe
 set NSIS=%DEVT%\nsis\nsis.exe
 set DOBUDISH=%DEVT%\DocBook\dobudish.cmd
-
-:: "Retirement" Directory where projects go to die...
-set DEVR=D:\_archives\dev
-
 
 :: Find MSBuild
 set MSBUILD=
