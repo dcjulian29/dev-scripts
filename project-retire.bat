@@ -8,7 +8,7 @@ set ERR=%ERRORLEVEL%
 if %ERR% neq 0 exit /b %ERRORLEVEL%
 
 set SDIR=%DDIR%
-set DDIR=%DEVR%\%PROJNAME%.7z
+set DDIR=%CD%\%PROJNAME%.7z
 
 if not exist %DDIR% goto DOARCHIVE
 
@@ -19,14 +19,14 @@ GOTO EOF
 
 :DOARCHIVE
 
-cd %SDIR%
-call %DEVT%\project-clean.bat
-cd ..
+pushd %SDIR%
+call %DEVT%\project-clean-all.bat
+popd
 
 echo.
 echo Retiring %PROJNAME%...
 
-%ZIP% a -t7z -mx9 -y -r  %DDIR% %SDIR%
+call %ZIP% a -t7z -mx9 -y -r  %DDIR% %SDIR%
 
 rmdir /Q /S %SDIR%
 
