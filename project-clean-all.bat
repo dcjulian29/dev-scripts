@@ -12,6 +12,9 @@ echo.
 
 :NOBUILDXML
 
+dir /b /s *.sln 1>nul 2>nul
+if %ERRORLEVEL% NEQ 0 goto EOF
+
 for /f "usebackq delims=" %%O in (`dir /B /S *.sln`) do call :PROCESSSLN %%O
 
 endlocal
