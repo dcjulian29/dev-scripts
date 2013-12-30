@@ -1,4 +1,4 @@
-::@echo off
+@echo off
 setlocal
 
 call %~dp0_dev_settings.cmd
