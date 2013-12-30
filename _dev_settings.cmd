@@ -43,3 +43,5 @@ for /D %%D in (%SYSTEMROOT%\Microsoft.NET\Framework64\v*) do (
 for /D %%D in ("C:\Program Files (x86)\MSBuild\*") do (
   if exist %%D\bin\MSBuild.exe set MSBUILD="%%D\bin\MSBuild.exe"
 )
+
+set PSHELL=call %SYSTEMDRIVE%\Tools\binaries\pshell.cmd 
