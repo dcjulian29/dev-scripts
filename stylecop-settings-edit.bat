@@ -36,4 +36,4 @@ exit /b 2
 
 set EXEC="%STYLECOP%" "%SETTINGS%"
 
-call %SYSTEMDRIVE%\bin\elevate.bat %EXEC%
+call %SYSTEMDRIVE%\Tools\binaries\elevate.bat %EXEC%
