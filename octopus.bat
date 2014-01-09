@@ -9,12 +9,12 @@ goto EOF
 
 :PROCEED
 
-call %DEVT%\Octopus\_loadSettings.cmd YES
+call %DEVT%\_octo_LoadSettings.cmd YES
 if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
 set PATH=%DEVT%\Octopus;%PATH%
 
-%DEVT%\Octopus\octo.exe %* --server %OCTOPUS-URL% --apiKey %OCTOPUS-API%
+%SYSTEMDRIVE%\Tools\apps\octopus\octo.exe %* --server %OCTOPUS-URL% --apiKey %OCTOPUS-API%
 
 :EOF
 
