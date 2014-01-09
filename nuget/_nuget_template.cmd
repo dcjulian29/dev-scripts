@@ -1,2 +1,0 @@
-set NUGET-URL=
-set NUGET-API=
