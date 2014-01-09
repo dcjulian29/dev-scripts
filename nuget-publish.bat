@@ -22,12 +22,10 @@ goto EOF
 
 :PUBLISH
 
-call %DEVT%\NuGet\_loadSettings.cmd YES
+call %DEVT%\_nuget_LoadSettings.cmd YES
 if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
-set PATH=%DEVT%\NuGet;%PATH%
-
-%DEVT%\NuGet\nuget.exe push %1 %NUGET-API% -Source %NUGET-URL%
+%SYSTEMDRIVE%\Tools\apps\nuget\nuget.exe push %1 %NUGET-API% -Source %NUGET-URL%
 
 :EOF
 

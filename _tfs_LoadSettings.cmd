@@ -11,7 +11,7 @@ goto TFS-CHECK-PROFILE-EXISTS
 
 set TFS-PROFILE=
 
-call %~dp0_tfsprofile_template.cmd
+call %SYSTEMDRIVE%\etc\tfs\_tfsprofile_template.cmd
 
 :: If profile is not defined, check the first parameter to
 ::  see if we should prompt for the profile
@@ -27,7 +27,7 @@ set /p TPN="What is the name of the TFS profile to use? "
 
 set TPN=%TPN: =%
 
-if exist "%~dp0_tfsprofile_%TPN%.cmd" goto TFS-LOAD-PROFILE
+if exist "%SYSTEMDRIVE%\etc\tfs\_tfsprofile_%TPN%.cmd" goto TFS-LOAD-PROFILE
 
 echo.
 echo The TFS profile does not exist.
@@ -37,6 +37,6 @@ exit /b 1
 
 :TFS-LOAD-PROFILE
 
-call %~dp0_tfsprofile_%TPN%.cmd
+call %SYSTEMDRIVE%\etc\tfs\_tfsprofile_%TPN%.cmd
 
 if "" neq "%TPN%" set TFS-PROFILE=%TPN%

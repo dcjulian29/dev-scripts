@@ -16,6 +16,6 @@ call %DEVT%\_tfs_LoadSettings.cmd YES
 :EOF
 
 :: Unload TFS settings execpt for profile name
-call %DEVT%\_tfsprofile_template.cmd
+call %SYSTEMDRIVE%\etc\tfs\_tfsprofile_template.cmd
 
 set DEVT=

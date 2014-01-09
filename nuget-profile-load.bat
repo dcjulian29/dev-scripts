@@ -6,16 +6,16 @@ set NUGET-PROFILE=
 
 if "%1" == "" goto NUGET-PL-C1
 
-call %DEVT%\NuGet\_loadSettings.cmd NO %1
+call %DEVT%\_nuget_LoadSettings.cmd NO %1
 goto EOF
 
 :NUGET-PL-C1
 
-call %DEVT%\NuGet\_loadSettings.cmd YES
+call %DEVT%\_nuget_LoadSettings.cmd YES
 
 :EOF
 
 :: Unload NuGet profile settings except for profile name
-call %DEVT%\NuGet\_nuget_template.cmd
+call %SYSTEMDRIVE%\etc\NuGet\_nuget_template.cmd
 
 set DEVT=
