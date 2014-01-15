@@ -25,7 +25,7 @@ echo.
 echo.
 echo Cloning %PROJNAME%...
 
-"%GIT%" svn clone %SVN-URL%/%PROJNAME% --authors-file=%DEVT:\=/%%SVN-AUTHORSFILE% -s --prefix=svn/ %CD%\%PROJNAME%
+"%GIT%" svn clone %SVN-URL%/%PROJNAME% --authors-file=%SYSTEMDRIVE%/etc/svn/%SVN-AUTHORSFILE% -s --prefix=svn/ %CD%\%PROJNAME%
 
 pushd %CD%\%PROJNAME%
 

@@ -11,7 +11,7 @@ goto SVN-CHECK-PROFILE-EXISTS
 
 set SVN-PROFILE=
 
-call %DEVT%\_svnprofile_template.cmd
+call %SYSTEMDRIVE%\etc\svn\_svnprofile_template.cmd
 
 :: If profile is not defined, check the first parameter to
 ::  see if we should prompt for the profile
@@ -27,7 +27,7 @@ set /p SPN="What is the name of the SVN profile to use? "
 
 set SPN=%SPN: =%
 
-if exist "%DEVT%\_svnprofile_%SPN%.cmd" goto SVN-LOAD-PROFILE
+if exist "%SYSTEMDRIVE%\etc\svn\_svnprofile_%SPN%.cmd" goto SVN-LOAD-PROFILE
 
 echo.
 echo The SVN profile does not exist.
@@ -37,6 +37,6 @@ exit /b 1
 
 :SVN-LOAD-PROFILE
 
-call %DEVT%\_svnprofile_%SPN%.cmd
+call %SYSTEMDRIVE%\etc\svn\_svnprofile_%SPN%.cmd
 
 if "" neq "%SPN%" set SVN-PROFILE=%SPN%
