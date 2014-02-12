@@ -4,8 +4,6 @@ setlocal
 call %~dp0_dev_settings.cmd
 call %DEVT%\_tfs_LoadSettings.cmd YES
 
-set PSHELL=call %SYSTEMDRIVE%\Tools\binaries\pshell.cmd 
-
 pushd ..
 for /f "usebackq tokens=* delims=" %%U in (`my-username.bat`) do set FULLNAME=%%U
 popd
