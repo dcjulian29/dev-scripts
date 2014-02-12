@@ -16,6 +16,6 @@ call %DEVT%\_nuget_LoadSettings.cmd YES
 :EOF
 
 :: Unload NuGet profile settings except for profile name
-call %SYSTEMDRIVE%\etc\NuGet\_nuget_template.cmd
+call %SYSTEMDRIVE%\etc\nuget\template.cmd
 
 set DEVT=
