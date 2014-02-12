@@ -6,16 +6,16 @@ set OCTOPUS-PROFILE=
 
 if "%1" == "" goto OCTOPUS-PL-C1
 
-call %DEVT%\Octopus\_loadSettings.cmd NO %1
+call %DEVT%\_octo_loadSettings.cmd NO %1
 goto EOF
 
 :OCTOPUS-PL-C1
 
-call %DEVT%\Octopus\_loadSettings.cmd YES
+call %DEVT%\_octo_loadSettings.cmd YES
 
 :EOF
 
 :: Unload TFS settings except for profile name
-call %DEVT%\Octopus\_octo_template.cmd
+call %SYSTEMDRIVE%\etc\octopus\template.cmd
 
 set DEVT=
