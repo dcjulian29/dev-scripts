@@ -15,7 +15,7 @@ call %DEVT%\_octo_loadSettings.cmd YES
 
 :EOF
 
-:: Unload TFS settings except for profile name
+:: Unload settings except for profile name
 call %SYSTEMDRIVE%\etc\octopus\template.cmd
 
 set DEVT=
