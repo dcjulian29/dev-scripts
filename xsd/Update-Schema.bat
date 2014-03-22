@@ -6,8 +6,6 @@ call %SYSTEMDRIVE%\Tools\binaries\_isElevated.cmd YES "%0" %*
 
 if %ERRORLEVEL% NEQ 99 goto EOF
 
-set XSD=%DEVT%\xsd\*.xsd
-
 call :UPDATE 8
 call :UPDATE 9
 call :UPDATE 10
@@ -29,7 +27,9 @@ echo.
 echo Copying schema files to %DIR%...
 echo.
 
-xcopy /R /Y "%XSD%" "%DIR%"
+pushd %~dp0
+xcopy *.xsd "%DIR%" /R /Y
+popd
 
 :EOF
 
