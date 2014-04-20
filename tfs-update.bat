@@ -1,32 +1,24 @@
 @echo off
+
 setlocal
+
 call %~dp0_dev_settings.cmd
 
-call %DEVT%\_tfs_LoadSettings.cmd YES
+set PROMPT=YES
+if [%1] NEQ [] set PROMPT=NO
+
+call %DEVT%\_tfs_LoadSettings.cmd %PROMPT% %1
 call %DEVT%\_tfs_Command.cmd
 
-if [%2] == [*] goto JUSTFILTER
-
-set PROJNAME=%1
-set FILTER=%2
-goto C5
-
-:JUSTFILTER
-
-set PROJNAME=
-set FILTER=%1
-
-:C5
-
 echo.
 echo.
-echo Updating %TFS-NS%/%PROJNAME%...
+echo Updating %TFS-NS%...
 echo.
 
 set TFCMD=%TFCMD% get
-set TFCMD=%TFCMD% "%TFS-NS%/%PROJNAME%"
+set TFCMD=%TFCMD% "%TFS-NS%"
 set TFCMD=%TFCMD% /recursive
 
 %TFCMD%
 
-:EOF
+endlocal
