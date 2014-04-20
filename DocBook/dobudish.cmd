@@ -1,21 +1,19 @@
-@echo off
+set DOCDIR=%CD%
 
-setlocal
+if %2 == create mkdir %1
 
-set ODIR=%CD%
-
-pushd %SystemDrive%\bin\development-tools\DocBook\dobudish
+pushd %TOOLDEV%\DocBook\dobudish
 
 rmdir /s /q documents 2> null
 
 mkdir documents
 
-call %SystemDrive%\bin\junction.bat documents\%1 %ODIR%\%1 > nul
+call %TOOLBIN%\junction.bat documents\%DOCNAME% %DOCDIR%\%DOCNAME% > nul
 
-call %SystemDrive%\bin\Run-Java.bat generator.bat %*
+call %TOOLBIN%\path-java.bat
+
+call generator.bat %*
 
 rmdir /s /q documents
 
 popd
-
-endlocal
