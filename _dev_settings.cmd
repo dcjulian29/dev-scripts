@@ -13,6 +13,16 @@ set DEVP=%DEVF%\_postponed
 
 for /f "usebackq delims=" %%O in (`where %~n0`) do set DEVT=%%~dpO
 
+set P64="%ProgramW6432%"
+if [%P64%] == [""] goto P64
+goto DPDIR
+
+:P64
+
+set P64="%ProgramFiles%"
+
+:DPDIR
+
 set PDIR="%ProgramFiles(x86)%"
 if [%PDIR%] == [""] goto B32
 
@@ -43,7 +53,6 @@ set ZIP="%TOOLBIN%\7Zip.cmd"
 set NANT=%DEVT%\nant\bin\NAnt.exe
 set NUNIT=%DEVT%\nunit\bin\nunit-console-x86.exe
 set NSIS=%DEVT%\nsis\nsis.exe
-set DOBUDISH=%TOOLDEV%\DocBook\dobudish.cmd
 
 :: Find MSBuild
 set MSBUILD=
