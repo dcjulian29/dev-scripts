@@ -43,13 +43,13 @@ echo.
 echo Cleaning %SLNFILE%...
 echo.
 
-call ~dp0project-clean.bat "%SLNFILE%"
+call %DEVT%\project-clean.bat "%SLNFILE%"
 
 if [%1] NEQ [release] goto EOF
 echo.
 echo.
 
-call ~dp0project-clean.bat "%SLNFILE%" release
+call %DEVT%\project-clean.bat "%SLNFILE%" release
 
 goto EOF
 
