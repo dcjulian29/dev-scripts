@@ -50,9 +50,12 @@ set TOOLBIN=%TOOLDIR%\binaries
 set TOOLDEV=%TOOLDIR%\development
 
 set ZIP="%TOOLBIN%\7Zip.cmd"
-set NANT=%DEVT%\nant\bin\NAnt.exe
-set NUNIT=%DEVT%\nunit\bin\nunit-console-x86.exe
-set NSIS=%DEVT%\nsis\nsis.exe
+set PSHELL=call %TOOLBIN%\pshell.cmd 
+
+set NANT=%TOOLDEV%\nant\bin\NAnt.exe
+set NUNIT=%TOOLDEV%\nunit\bin\nunit-console-x86.exe
+set NSIS=%TOOLDEV%\nsis\nsis.exe
+
 
 :: Find MSBuild
 set MSBUILD=
@@ -67,8 +70,6 @@ for /D %%D in (%SYSTEMROOT%\Microsoft.NET\Framework64\v*) do (
 for /D %%D in ("C:\Program Files (x86)\MSBuild\*") do (
   if exist %%D\bin\MSBuild.exe set MSBUILD="%%D\bin\MSBuild.exe"
 )
-
-set PSHELL=call %SYSTEMDRIVE%\Tools\binaries\pshell.cmd 
 
 set DEVSETTINGS=LOADED
 
