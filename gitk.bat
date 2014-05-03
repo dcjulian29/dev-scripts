@@ -1,0 +1,1 @@
+@call "%PF32%\Git\cmd\gitk.cmd" %*
