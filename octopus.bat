@@ -2,9 +2,12 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
+set PATH=%TOOLAPP%\octopus;%PATH%
+
 if [%1] NEQ [] goto PROCEED
 
-%DEVT%\Octopus\octo.exe
+%TOOLAPP%\octopus\octo.exe
+
 goto EOF
 
 :PROCEED
@@ -12,9 +15,7 @@ goto EOF
 call %DEVT%\_octo_LoadSettings.cmd YES
 if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%
 
-set PATH=%DEVT%\Octopus;%PATH%
-
-%SYSTEMDRIVE%\Tools\apps\octopus\octo.exe %* --server %OCTOPUS-URL% --apiKey %OCTOPUS-API%
+%TOOLAPP%\octopus\octo.exe %* --server %OCTOPUS-URL% --apiKey %OCTOPUS-API%
 
 :EOF
 
