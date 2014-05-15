@@ -52,9 +52,8 @@ set TOOLDEV=%TOOLDIR%\development
 set ZIP="%TOOLBIN%\7Zip.cmd"
 set PSHELL=call %TOOLBIN%\pshell.cmd 
 
-set NANT=%TOOLDEV%\nant\bin\NAnt.exe
-set NUNIT=%TOOLDEV%\nunit\bin\nunit-console-x86.exe
-set NSIS=%TOOLDEV%\nsis\nsis.exe
+set NANT=%TOOLAPP%\nant\bin\NAnt.exe
+set NSIS=%TOOLAPP%\nsis\nsis.exe
 
 
 :: Find MSBuild
