@@ -28,18 +28,15 @@ goto EOF
 
 :PROCESS
 
-if [%2] EQU [release] goto RELEASE
-if [%2] EQU [RELEASE] goto RELEASE
+if [%2] NEQ [] goto BUILDCONFIG
 
 %MSBUILD% "%SLN%" /m /t:clean /p:configuration="Debug"
 
 goto EOF
 
-:RELEASE
+:BUILDCONFIG
 
-echo.
-echo.
-%MSBUILD% "%SLN%" /m /t:clean /p:configuration="Release"
+%MSBUILD% "%SLN%" /m /t:clean /p:configuration="%2"
 
 :EOF
 

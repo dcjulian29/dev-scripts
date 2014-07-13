@@ -41,15 +41,18 @@ set SLNFILE=%SLNFILE:/= %
 
 echo.
 echo Cleaning %SLNFILE%...
+if [%1] NEQ [] echo     Configuration: %1...
 echo.
+
+if [%1] NEQ [] goto BUILDCONFIG
 
 call %DEVT%\project-clean.bat "%SLNFILE%"
 
-if [%1] NEQ [release] goto EOF
-echo.
-echo.
+goto EOF
 
-call %DEVT%\project-clean.bat "%SLNFILE%" release
+:BUILDCONFIG
+
+call %DEVT%\project-clean.bat "%SLNFILE%" %1
 
 goto EOF
 
