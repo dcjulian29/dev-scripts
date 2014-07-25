@@ -51,17 +51,13 @@ echo $toolDir = "$(Split-Path -parent $MyInvocation.MyCommand.Path)"
 echo.
 echo if ^($psISE^) {
 echo     Import-Module -name "$env:ChocolateyInstall\chocolateyinstall\helpers\chocolateyInstaller.psm1"
-echo     $ErrorActionPreference = "Stop"
 echo }
 echo.
-echo try
-echo {
+echo try {
 echo     Install-ChocolateyPackage $packageName $installerType $installerArgs $url $url64
 echo.
 echo     Write-ChocolateySuccess $packageName
-echo }
-echo catch
-echo {
+echo } catch {
 echo     Write-ChocolateyFailure $packageName $^($_.Exception.Message^)
 echo     throw
 echo }
@@ -72,8 +68,7 @@ echo $packageName = "__REPLACE__"
 echo $packageWildCard = "*$($package)*";
 echo $appDir = "$($env:ChocolateyInstall)\apps\$($packageName)"
 echo.
-echo try
-echo {
+echo try {
 echo     # For Portable-Apps
 echo     if ^(Test-Path $appDir^)
 echo     {
@@ -87,9 +82,7 @@ echo         $result = $app.Uninstall^(^);
 echo     }
 echo.
 echo     Write-ChocolateySuccess $packageName
-echo }
-echo catch
-echo {
+echo } catch {
 echo     Write-ChocolateyFailure $packageName $^($_.Exception.Message^)
 echo     throw
 echo }
