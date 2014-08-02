@@ -29,9 +29,9 @@ echo     ^<licenseUrl^>__REPLACE__^</licenseUrl^>
 echo     ^<requireLicenseAcceptance^>false^</requireLicenseAcceptance^>
 echo     ^<description^>__REPLACE__^</description^>
 echo     ^<tags^>__REPLACE__^</tags^>
-echo     ^<!--^<dependencies^>
+echo     ^<dependencies^>
 echo       ^<dependency id="" version="" /^>
-echo     ^</dependencies^>--^>
+echo     ^</dependencies^>
 echo   ^</metadata^>
 echo ^</package^>
 ) > Package.nuspec
@@ -46,7 +46,8 @@ echo $installerArgs = "/s /S /q /Q /quiet /silent /SILENT /VERYSILENT"
 echo $url = "__REPLACE__"
 echo $url64 = "__REPLACE__"
 echo.
-echo $appDir = "$($env:ChocolateyInstall)\apps\$($packageName)"
+echo $downloadPath = "$($env:TEMP)\chocolatey\$($packageName)"
+echo $appDir = "$($env:SYSTEMDRIVE)\tools\apps\$($packageName)"
 echo $toolDir = "$(Split-Path -parent $MyInvocation.MyCommand.Path)"
 echo.
 echo if ^($psISE^) {
@@ -66,7 +67,7 @@ echo }
 (
 echo $packageName = "__REPLACE__"
 echo $packageWildCard = "*$($package)*";
-echo $appDir = "$($env:ChocolateyInstall)\apps\$($packageName)"
+echo $appDir = "$($env:SYSTEMDRIVE)\tools\apps\$($packageName)"
 echo.
 echo try {
 echo     # For Portable-Apps
