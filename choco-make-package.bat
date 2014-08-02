@@ -26,7 +26,7 @@ goto EOF
 
 :PACKAGE
 
-chocolatey pack "%PKG% -Verbosity detailed"
+%ChocolateyInstall%\chocolateyinstall\nuget.exe pack "%PKG%" -Verbosity detailed -NoPackageAnalysis -NonInteractive
 
 :EOF
 
