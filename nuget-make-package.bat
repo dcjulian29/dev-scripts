@@ -26,6 +26,6 @@ goto EOF
 
 :PACKAGE
 
-%DEVT%\nuget\nuget.exe pack %PKG% -Verbosity detailed
+%SYSTEMDRIVE%\tools\apps\nuget\nuget.exe pack %PKG% -Verbosity detailed
 
 endlocal
