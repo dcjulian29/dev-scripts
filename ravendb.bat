@@ -9,12 +9,10 @@ set SC=%WINDIR%\System32\sc.exe
 
 if [%1] == [START] goto PARSED-START
 if [%1] == [STOP] goto PARSED-STOP
-if [%1] == [QUERY] goto PARSED-QUERY
 if [%1] == [CLIENT] goto PARSED-CLIENT
 
 if [%1] == [start] goto PARSED-START
 if [%1] == [stop] goto PARSED-STOP
-if [%1] == [query] goto PARSED-QUERY
 if [%1] == [client] goto PARSED-CLIENT
 
 goto HELP
@@ -24,7 +22,7 @@ goto HELP
 call %SYSTEMDRIVE%\tools\binaries\_isElevated.cmd YES "%0" %*
 if %ERRORLEVEL% NEQ 99 goto EOF
 
-call :START MongoDB
+call :START RavenDB
 
 goto EOF
 
@@ -33,36 +31,7 @@ goto EOF
 call %SYSTEMDRIVE%\tools\binaries\_isElevated.cmd YES "%0" %*
 if %ERRORLEVEL% NEQ 99 goto EOF
 
-call :STOP MongoDB
-
-goto EOF
-
-:PARSED-QUERY
-
-:: Check to see if service exists
-%SC% query MongoDB > nul
-if %ERRORLEVEL% == 1060 goto NOSQL
-
-
-%SC% query MongoDB | %WINDIR%\System32\find.exe "RUNNING" > nul
-If %ERRORLEVEL% NEQ 0 goto NOTRUNNING
-
-echo MongoDB Server is running...
-echo.
-
-goto EOF
-
-:NOSQL
-
-echo MongoDB Server is not installed...
-echo.
-
-goto EOF
-
-:NOTRUNNING
-
-echo MongoDB Server is not running...
-echo.
+call :STOP RavenDB
 
 goto EOF
 
@@ -94,7 +63,7 @@ goto EOF
 
 :PARSED-CLIENT
 
-"%SYSTEMDRIVE%\Program Files\MongoDB\bin\mongo.exe"
+start "" "http://localhost:9020/"
 
 goto EOF
 
@@ -103,8 +72,8 @@ goto EOF
 echo.
 echo Server Helper Script
 echo.
-echo This script helps to automate and script functions related to the MongoDB Server Service.
+echo This script helps to automate and script functions related to the RavenDB Server Service.
 echo.
-echo Usage: %0 [START^|STOP^|QUERY^|CLIENT]
+echo Usage: %0 [START^|STOP^|CLIENT]
 
 :EOF

@@ -20,7 +20,7 @@ goto HELP
 
 :PARSED-START
 
-call %SYSTEMDRIVE%\bin\_isElevated.cmd YES "%0" %*
+call %SYSTEMDRIVE%\tools\binaries\_isElevated.cmd YES "%0" %*
 if %ERRORLEVEL% NEQ 99 goto EOF
 
 call :START sqlwriter
@@ -31,7 +31,7 @@ goto EOF
 
 :PARSED-STOP
 
-call %SYSTEMDRIVE%\bin\_isElevated.cmd YES "%0" %*
+call %SYSTEMDRIVE%\tools\binaries\_isElevated.cmd YES "%0" %*
 if %ERRORLEVEL% NEQ 99 goto EOF
 
 call :STOP mssqlserver
