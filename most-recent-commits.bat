@@ -3,10 +3,10 @@ setlocal
 call %~dp0_dev_settings.cmd
 
 ECHO.
-ECHO Showing last commit message for projects...
+ECHO Showing last commit message for projects in this folder...
 ECHO.
 
-FOR /d %%D in (%DEVF%\*) DO (
+FOR /d %%D in (%CD%\*) DO (
   IF NOT EXIST %%D\.svn (
     IF NOT EXIST %%D\.git (
       :: This folder is a non SCM folder
