@@ -28,7 +28,7 @@ GOTO EOF
 
 :CONTINUE
 
-"%GIT%" checkout %1
+%GIT% checkout %1
 
 :EOF
 
