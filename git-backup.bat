@@ -13,6 +13,7 @@ GOTO EOF
 :GITDIR
 
 set BVER=%date:~-4,4%%date:~-10,2%%date:~-7,2%
+for %%A in (%CD:\= %) do set PROJNAME=%%A
 
 set SDIR=%CD%
 set DDIR=%TEMP%\%PROJNAME%-backup-%BVER%
