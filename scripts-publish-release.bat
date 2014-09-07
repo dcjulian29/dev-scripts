@@ -16,8 +16,8 @@ if [%1] == [] goto NOTAGPROVIDED
 
 call %~dp0_dev_settings.cmd
 
-%GIT% tag '%1'
-%GIT% push origin '%1'
+%GIT% tag %1
+%GIT% push origin %1
 
 goto EOF
 
