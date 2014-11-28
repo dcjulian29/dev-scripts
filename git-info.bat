@@ -15,6 +15,9 @@ pushd
 if %CD:~0,3% EQU %CD% goto CONT
 dir /b | findstr /L /C:".git" >nul
 if %ERRORLEVEL% EQU 0 goto CONT
+:: Sometimes the .git directory is "hidden"
+dir /b /AH | findstr /L /C:".git" >nul
+if %ERRORLEVEL% EQU 0 goto CONT
 cd ..
 goto LOOP
 
