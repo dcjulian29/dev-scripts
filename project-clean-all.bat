@@ -2,15 +2,8 @@
 setlocal
 call %~dp0_dev_settings.cmd
 
-if not exist %CD%\build.xml GOTO NOBUILDXML
-
-echo.
-echo      Cleaning Build Outputs...
-echo.
-
-%NANT% -buildfile:%SDIR%\build.xml clean
-
-:NOBUILDXML
+set CONFIG=
+if [%1] NEQ [] set CONFIG=%1
 
 dir /b /s *.sln 1>nul 2>nul
 if %ERRORLEVEL% NEQ 0 goto EOF
@@ -41,10 +34,10 @@ set SLNFILE=%SLNFILE:/= %
 
 echo.
 echo Cleaning %SLNFILE%...
-if [%1] NEQ [] echo     Configuration: %1...
+if [%CONFIG%] NEQ [] echo     Configuration: %CONFIG%...
 echo.
 
-if [%1] NEQ [] goto BUILDCONFIG
+if [%CONFIG%] NEQ [] goto BUILDCONFIG
 
 call %DEVT%\project-clean.bat "%SLNFILE%"
 
@@ -52,7 +45,7 @@ goto EOF
 
 :BUILDCONFIG
 
-call %DEVT%\project-clean.bat "%SLNFILE%" %1
+call %DEVT%\project-clean.bat "%SLNFILE%" %CONFIG%
 
 goto EOF
 
