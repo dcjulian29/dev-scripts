@@ -13,7 +13,7 @@ goto EOF
 
 set VSV=%1
 
-if [%VSV%] == [2013] set VSV=14.0
+if [%VSV%] == [2015] set VSV=14.0
 if [%VSV%] == [2013] set VSV=12.0
 if [%VSV%] == [2012] set VSV=11.0
 if [%VSV%] == [2010] set VSV=10.0
