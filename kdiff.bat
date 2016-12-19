@@ -1,1 +1,0 @@
-@start %SYSTEMDRIVE%\tools\apps\kdiff\kdiff3.exe %*
